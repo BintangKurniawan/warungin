@@ -1,5 +1,12 @@
 from InquirerPy import prompt
 import os
+import tabulate
+productsfile = "project/products.txt"
+
+def cek_produk():
+    with open(productsfile, "r") as f:
+        print(tabulate.tabulate([line.split(",") for line in f], tablefmt="grid", headers=["ID", "NAMA", "STOK", "HARGA"]))
+        
 
 def main():
     opt = [
@@ -12,11 +19,11 @@ def main():
     ]
     lanjut = True
     while lanjut == True:
-        os.system('cls')
+        # os.system('cls')
         print("========Welcome to Warungin========")
         answer = prompt(opt)
         if answer["Option"] == "1. Cek Produk":
-            print("Cek produk")
+            cek_produk()
         elif answer["Option"] == "2. Kelola produk":
             print("Cek produk")
         elif answer["Option"] == "3. Cek Pendataan Harian":
