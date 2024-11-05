@@ -1,0 +1,1 @@
+print("kalo punya hutang bayar")

@@ -1,1 +1,1 @@
-print("Bintang ambas")
+print("Halo dunia")
