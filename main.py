@@ -1,54 +1,64 @@
 from InquirerPy import prompt
+from InquirerPy import inquirer
 import os
 import tabulate
 productsfile = "products.txt"
 
 def cek_produk():
-    opt = [
-        {
-            "type": "list",  # Menggunakan list prompt
-            "name": "Option",  # Nama dari key yang digunakan di jawaban
-            "message": "Pilih salah satu opsi:",  # Pesan yang ditampilkan ke pengguna
-            "choices": ["1. Cari Produk", "2. keluar"]  # Pilihan opsi
-        }
-    ]
+    per_page = 1
+    cur_page =0
+    with open(productsfile, "r") as f:
+        data = [line.strip().split(",") for line in f]
+
+    total_rows = len(data)
+    total_pages = (total_rows + per_page - 1)
 
     while True:
         os.system('cls')
 
-        with open(productsfile, "r") as f:
-            print(tabulate.tabulate([line.split(",") for line in f], tablefmt="grid", headers=["ID", "NAMA", "STOK", "HARGA"], stralign="center", numalign="center"))
+        start = cur_page * per_page
+        end = start + per_page
+        page_data = data[start:end]
 
-        answer = prompt(opt)
-        if answer["Option"] == "1. Cari Produk":
-            print("Cari Produk")
-        elif answer["Option"] == "2. keluar":
-            print("Keluar")
+        print(tabulate.tabulate(page_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
+
+        answer = inquirer.select(
+            message="Pilih salah satu opsi:",
+            choices=["Next Page", "Previous Page", "Cari Produk", "Keluar"],
+            default="Next Page"
+        ).execute()
+
+        if answer == "Next Page" and cur_page < total_pages - 1:
+            cur_page += 1
+        elif answer == "Previous Page" and cur_page > 0:
+            cur_page -= 1
+        elif answer == "Cari Produk":
+            print("Cari Produk (this feature is under construction)")
+            input("\nPress Enter to return to the menu...")
+        elif answer == "Keluar":
             break
         
 def main():
-    opt = [
-        {
-            "type": "list",  # Menggunakan list prompt
-            "name": "Option",  # Nama dari key yang digunakan di jawaban
-            "message": "Pilih salah satu opsi:",  # Pesan yang ditampilkan ke pengguna
-            "choices": ["1. Cek Produk", "2. Kelola Produk", "3. Cek Pendataan Harian", "4. Cek Pengutang", "5. Keluar"]  # Pilihan opsi
-        }
-    ]
     lanjut = True
     while lanjut == True:
         os.system('cls')
         print("========Welcome to Warungin========")
-        answer = prompt(opt)
-        if answer["Option"] == "1. Cek Produk":
+
+        answer = inquirer.select(
+            message="Pilih salah satu opsi:",
+            choices=["Cek Produk", "Kelola Produk", "Cek Pendataan Harian", "Cek Pengutang", "Keluar"],
+            default="Next Page"
+        ).execute()
+
+        if answer == "Cek Produk":
             cek_produk()
-        elif answer["Option"] == "2. Kelola produk":
+        elif answer == "Kelola produk":
             print("Cek produk")
-        elif answer["Option"] == "3. Cek Pendataan Harian":
+        elif answer == "Cek Pendataan Harian":
             print("Cek pengutang")
-        elif answer["Option"] == "4. Cek Pengutang":
+        elif answer == "Cek Pengutang":
             print("Cek pengutang")
-        elif answer["Option"] == "5. Keluar":
+        elif answer == "Keluar":
             print("Exit")
             lanjut = False
 
