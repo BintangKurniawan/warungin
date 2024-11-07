@@ -1,12 +1,13 @@
-from InquirerPy import prompt
 from InquirerPy import inquirer
 import os
 import tabulate
 productsfile = "products.txt"
 
-with open(productsfile, "r") as f:
-        data = [line.strip().split(",") for line in f]
+def load_data_produk():
+    with open(productsfile, "r") as f:
+            return [line.strip().split(",") for line in f]
 
+per_page = 5
 
 def cari_produk():
     hasil = []
@@ -26,7 +27,7 @@ def cari_produk():
         if answer == "Cari Produk":
             quary = input("Masukkan nama produk: ")
             hasil = []
-            for product in data:
+            for product in data_produk:
                 if quary.lower() in product[1].lower():
                     hasil.append(product)
 
@@ -37,20 +38,34 @@ def cari_produk():
         elif answer == "Keluar":
             break
 
-def cek_produk():
-    per_page = 5
-    cur_page =0
+def tambah_produk():
+    data_produk = load_data_produk()
+
+    nama_produk = input("Masukkan nama produk: ")
+    stok_produk = input("Masukkan stok produk: ")
+    harga_produk = input("Masukkan harga produk: ")
+
     
 
-    total_rows = len(data)
-    total_pages = (total_rows + per_page - 1)
+    with open(productsfile, "a") as f:
+        f.write(f"{len(data_produk) + 1},{nama_produk},{stok_produk},{harga_produk}\n")
+
+    print("Produk berhasil ditambahkan")
+
+def cek_produk():
+    cur_page = 0
 
     while True:
         os.system('cls')
 
+        data_produk = load_data_produk()
+        
+        total_rows = len(data_produk)
+        total_pages = (total_rows + per_page - 1)
+
         start = cur_page * per_page
         end = start + per_page
-        page_data = data[start:end]
+        page_data = data_produk[start:end]
 
         print(tabulate.tabulate(page_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
 
@@ -68,10 +83,49 @@ def cek_produk():
             cari_produk()
         elif answer == "Keluar":
             break
+
+def kelola_produk():
+    cur_page = 0
+
+    while True:
+        os.system('cls')
+
+        data_produk = load_data_produk()
+        total_rows = len(data_produk)
+        total_pages = (total_rows + per_page - 1)
+
+        start = cur_page * per_page
+        end = start + per_page
+        page_data = data_produk[start:end]
+
+        print(tabulate.tabulate(page_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
+
+        answer = inquirer.select(
+            message="Pilih salah satu opsi:",
+            choices=["Next Page", "Previous Page", "Tambah Produk", "Tambah Stok", "Edit Produk", "Hapus Produk", "Keluar"],
+            default="Next Page"
+        ).execute()
+
+        if answer == "Next Page" and cur_page < total_pages - 1:
+            cur_page += 1
+        elif answer == "Previous Page" and cur_page > 0:
+            cur_page -= 1
+        elif answer == "Tambah Produk":
+            tambah_produk()
+        elif answer == "Tambah Stok":
+            print("Buyer stok")
+        elif answer == "Edit Produk":
+            print("Edit produk")
+        elif answer == "Hapus Produk":
+            print("Hapus produk")
+        elif answer == "Keluar":
+            break
+
         
+
 def main():
-    lanjut = True
-    while lanjut == True:
+    
+    while True:
         os.system('cls')
         print("========Welcome to Warungin========")
 
@@ -83,15 +137,15 @@ def main():
 
         if answer == "Cek Produk":
             cek_produk()
-        elif answer == "Kelola produk":
-            print("Cek produk")
+        elif answer == "Kelola Produk":
+            kelola_produk()
         elif answer == "Cek Pendataan Harian":
             print("Cek pengutang")
         elif answer == "Cek Pengutang":
             print("Cek pengutang")
         elif answer == "Keluar":
             print("Exit")
-            lanjut = False
+            break
 
 if __name__ == "__main__":
     main()

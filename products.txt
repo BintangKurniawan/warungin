@@ -1,3 +1,2 @@
-1, nipis madu, 200, 3000
-2, funta, 100, 5000
-3, le mineral, 300, 3500
+1,funta,200,2000
+2,coka,20,1000
