@@ -4,11 +4,43 @@ import os
 import tabulate
 productsfile = "products.txt"
 
-def cek_produk():
-    per_page = 1
-    cur_page =0
-    with open(productsfile, "r") as f:
+with open(productsfile, "r") as f:
         data = [line.strip().split(",") for line in f]
+
+
+def cari_produk():
+    hasil = []
+    
+    while True:
+        os.system('cls')
+
+        if hasil:
+            print(tabulate.tabulate(hasil, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
+
+        answer = inquirer.select(
+            message="Pilih salah satu opsi:",
+            choices=["Cari Produk", "Keluar"],
+            default="Cari Produk"
+        ).execute()
+
+        if answer == "Cari Produk":
+            quary = input("Masukkan nama produk: ")
+            hasil = []
+            for product in data:
+                if quary.lower() in product[1].lower():
+                    hasil.append(product)
+
+            if hasil:
+                print(tabulate.tabulate(hasil, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
+            else:
+                print("Produk tidak ditemukan")
+        elif answer == "Keluar":
+            break
+
+def cek_produk():
+    per_page = 5
+    cur_page =0
+    
 
     total_rows = len(data)
     total_pages = (total_rows + per_page - 1)
@@ -33,8 +65,7 @@ def cek_produk():
         elif answer == "Previous Page" and cur_page > 0:
             cur_page -= 1
         elif answer == "Cari Produk":
-            print("Cari Produk (this feature is under construction)")
-            input("\nPress Enter to return to the menu...")
+            cari_produk()
         elif answer == "Keluar":
             break
         
