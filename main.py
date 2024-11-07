@@ -11,6 +11,8 @@ per_page = 5
 
 def cari_produk():
     hasil = []
+
+    data_produk = load_data_produk()
     
     while True:
         os.system('cls')
