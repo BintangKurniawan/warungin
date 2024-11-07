@@ -1,16 +1,13 @@
-from InquirerPy import prompt
 from InquirerPy import inquirer
 import os
 import tabulate
-import keyboard
 productsfile = "products.txt"
 
-with open(productsfile, "r") as f:
-        data_produk = [line.strip().split(",") for line in f]
+def load_data_produk():
+    with open(productsfile, "r") as f:
+            return [line.strip().split(",") for line in f]
 
 per_page = 5
-total_rows = len(data_produk)
-total_pages = (total_rows + per_page - 1)
 
 def cari_produk():
     hasil = []
@@ -41,15 +38,31 @@ def cari_produk():
         elif answer == "Keluar":
             break
 
+def tambah_produk():
+    data_produk = load_data_produk()
+
+    nama_produk = input("Masukkan nama produk: ")
+    stok_produk = input("Masukkan stok produk: ")
+    harga_produk = input("Masukkan harga produk: ")
+
+    
+
+    with open(productsfile, "a") as f:
+        f.write(f"{len(data_produk) + 1},{nama_produk},{stok_produk},{harga_produk}\n")
+
+    print("Produk berhasil ditambahkan")
+
 def cek_produk():
     cur_page = 0
 
     while True:
         os.system('cls')
 
+        data_produk = load_data_produk()
+        
+        total_rows = len(data_produk)
+        total_pages = (total_rows + per_page - 1)
 
-        with open(productsfile, "r") as f:
-            data_produk = [line.strip().split(",") for line in f]
         start = cur_page * per_page
         end = start + per_page
         page_data = data_produk[start:end]
@@ -71,24 +84,16 @@ def cek_produk():
         elif answer == "Keluar":
             break
 
-def tambah_produk():
-    nama_produk = input("Masukkan nama produk: ")
-    stok_produk = input("Masukkan stok produk: ")
-    harga_produk = input("Masukkan harga produk: ")
-
-    with open(productsfile, "a") as f:
-        f.write(f"{len(data_produk) + 1},{nama_produk},{stok_produk},{harga_produk}\n")
-
-    print("Produk berhasil ditambahkan")
-
 def kelola_produk():
     cur_page = 0
 
     while True:
         os.system('cls')
 
-        with open(productsfile, "r") as f:
-            data_produk = [line.strip().split(",") for line in f]
+        data_produk = load_data_produk()
+        total_rows = len(data_produk)
+        total_pages = (total_rows + per_page - 1)
+
         start = cur_page * per_page
         end = start + per_page
         page_data = data_produk[start:end]
