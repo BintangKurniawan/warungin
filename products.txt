@@ -1,5 +1,5 @@
 1,funta,200,2000
-2,cola,2,1
+2,cola,7,1
 3,ambas,2,20
 4,ambas,3,20
 5,babas,29,99

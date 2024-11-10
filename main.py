@@ -82,6 +82,32 @@ def edit_produk():
 
     print("Produk berhasil diedit")
 
+def tambah_stok():
+    data_produk = load_data_produk()
+
+    id_produk = input("Masukkan ID produk: ")
+
+    produk_ditemukan = False
+    for product in data_produk:
+        if product[0] == id_produk:
+            produk_ditemukan = True
+            break
+
+    if not produk_ditemukan:
+        print("Error: ID produk tidak ditemukan.")
+        return
+
+    stok_produk = input("Masukkan stok produk: ")
+
+    with open(productsfile, "w") as f:
+        for product in data_produk:
+            if product[0] == id_produk:
+                f.write(f"{id_produk},{product[1]},{int(product[2]) + int(stok_produk)},{product[3]}\n")
+            else:
+                f.write(f"{product[0]},{product[1]},{product[2]},{product[3]}\n")
+
+    print("Stok berhasil ditambahkan")
+
 def cek_produk():
     cur_page = 0
 
@@ -143,7 +169,7 @@ def kelola_produk():
         elif answer == "Tambah Produk":
             tambah_produk()
         elif answer == "Tambah Stok":
-            print("Buyer stok")
+            tambah_stok()
         elif answer == "Edit Produk":
             edit_produk()
         elif answer == "Hapus Produk":
