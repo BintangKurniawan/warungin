@@ -4,28 +4,33 @@ import tabulate
 import random
 import string
 productsfile = "products.txt"
+per_page = 5
 
+# fungsi ini untuk membuat id random
 def randomizer_id():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
 
-
+# fungsi ini untuk load data produk
 def load_data_produk():
     with open(productsfile, "r") as f:
             return [line.strip().split(",") for line in f]
 
-per_page = 5
-
+# fungsi ini untuk mencari produk
 def cari_produk():
+    # variabel ini untuk menyimpan hasil pencarian
     hasil = []
 
+    # variabel ini untuk menyimpan data produk
     data_produk = load_data_produk()
     
     while True:
         os.system('cls')
 
+        # logika ini untuk menampilkan hasil pencarian
         if hasil:
             print(tabulate.tabulate(hasil, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
 
+        # variabel ini untuk menampung pilihan user
         answer = inquirer.select(
             message="Pilih salah satu opsi:",
             choices=["Cari Produk", "Keluar"],
@@ -34,11 +39,14 @@ def cari_produk():
 
         if answer == "Cari Produk":
             quary = input("Masukkan nama produk: ").title()
+
+            # variabel ini untuk mengosongkan variabel hasil sebelumnya
             hasil = []
             for product in data_produk:
                 if quary.lower() in product[1].lower():
                     hasil.append(product)
 
+            # logika ini untuk menampilkan data yang ditemukan
             if hasil:
                 print(tabulate.tabulate(hasil, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
             else:
@@ -46,6 +54,7 @@ def cari_produk():
         elif answer == "Keluar":
             break
 
+# fungsi ini untuk menambah produk
 def tambah_produk():
     data_produk = load_data_produk()
 
@@ -53,18 +62,21 @@ def tambah_produk():
     stok_produk = input("Masukkan stok produk: ")
     harga_produk = input("Masukkan harga produk: ")
 
+    # variabel ini untuk membuat id random
     id_produk = randomizer_id()
 
+    # variabel ini untuk mengecek apakah id produk sudah ada
     existing_ids = {product[0] for product in data_produk}
     while id_produk in existing_ids:
         id_produk = randomizer_id()
 
-
+    # variabel ini untuk menambahkan produk
     with open(productsfile, "a") as f:
         f.write(f"{id_produk},{nama_produk},{stok_produk},{harga_produk}\n")
 
     print("Produk berhasil ditambahkan")
 
+# fungsi ini untuk mengedit produk
 def edit_produk():
     data_produk = load_data_produk()
 
@@ -93,6 +105,7 @@ def edit_produk():
 
     print("Produk berhasil diedit")
 
+# fungsi ini untuk menambah stok
 def tambah_stok():
     data_produk = load_data_produk()
 
@@ -119,6 +132,7 @@ def tambah_stok():
 
     print("Stok berhasil ditambahkan")
 
+# fungsi ini untuk menghapus produk
 def hapus_produk():        
     data_produk = load_data_produk()
 
@@ -141,6 +155,7 @@ def hapus_produk():
 
     print("Produk berhasil dihapus")
 
+# fungsi ini untuk ngecek produk
 def cek_produk():
     cur_page = 0
 
@@ -149,6 +164,7 @@ def cek_produk():
 
         data_produk = load_data_produk()
         
+        # variabel ini untuk menghitung total rows
         total_rows = len(data_produk)
         total_pages = (total_rows + per_page - 1)
 
@@ -173,6 +189,7 @@ def cek_produk():
         elif answer == "Keluar":
             break
 
+# fungsi ini untuk ngelola produk
 def kelola_produk():
     cur_page = 0
 
