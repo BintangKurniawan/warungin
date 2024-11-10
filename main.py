@@ -1,7 +1,13 @@
 from InquirerPy import inquirer
 import os
 import tabulate
+import random
+import string
 productsfile = "products.txt"
+
+def randomizer_id():
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
+
 
 def load_data_produk():
     with open(productsfile, "r") as f:
@@ -27,7 +33,7 @@ def cari_produk():
         ).execute()
 
         if answer == "Cari Produk":
-            quary = input("Masukkan nama produk: ")
+            quary = input("Masukkan nama produk: ").title()
             hasil = []
             for product in data_produk:
                 if quary.lower() in product[1].lower():
@@ -43,21 +49,26 @@ def cari_produk():
 def tambah_produk():
     data_produk = load_data_produk()
 
-    nama_produk = input("Masukkan nama produk: ")
+    nama_produk = input("Masukkan nama produk: ").title()
     stok_produk = input("Masukkan stok produk: ")
     harga_produk = input("Masukkan harga produk: ")
 
-    
+    id_produk = randomizer_id()
+
+    existing_ids = {product[0] for product in data_produk}
+    while id_produk in existing_ids:
+        id_produk = randomizer_id()
+
 
     with open(productsfile, "a") as f:
-        f.write(f"{len(data_produk) + 1},{nama_produk},{stok_produk},{harga_produk}\n")
+        f.write(f"{id_produk},{nama_produk},{stok_produk},{harga_produk}\n")
 
     print("Produk berhasil ditambahkan")
 
 def edit_produk():
     data_produk = load_data_produk()
 
-    id_produk = input("Masukkan ID produk: ")
+    id_produk = input("Masukkan ID produk: ").upper()
 
     produk_ditemukan = False
     for product in data_produk:
@@ -85,7 +96,7 @@ def edit_produk():
 def tambah_stok():
     data_produk = load_data_produk()
 
-    id_produk = input("Masukkan ID produk: ")
+    id_produk = input("Masukkan ID produk: ").upper()
 
     produk_ditemukan = False
     for product in data_produk:
@@ -107,6 +118,28 @@ def tambah_stok():
                 f.write(f"{product[0]},{product[1]},{product[2]},{product[3]}\n")
 
     print("Stok berhasil ditambahkan")
+
+def hapus_produk():        
+    data_produk = load_data_produk()
+
+    id_produk = input("Masukkan ID produk: ").upper()
+
+    produk_ditemukan = False
+    for product in data_produk:
+        if product[0] == id_produk:
+            produk_ditemukan = True
+            break
+
+    if not produk_ditemukan:
+        print("Error: ID produk tidak ditemukan.")
+        return
+
+    with open(productsfile, "w") as f:
+        for product in data_produk:
+            if product[0] != id_produk:
+                f.write(f"{product[0]},{product[1]},{product[2]},{product[3]}\n")
+
+    print("Produk berhasil dihapus")
 
 def cek_produk():
     cur_page = 0
@@ -139,28 +172,6 @@ def cek_produk():
             cari_produk()
         elif answer == "Keluar":
             break
-
-def hapus_produk():        
-    data_produk = load_data_produk()
-
-    id_produk = input("Masukkan ID produk: ")
-
-    produk_ditemukan = False
-    for product in data_produk:
-        if product[0] == id_produk:
-            produk_ditemukan = True
-            break
-
-    if not produk_ditemukan:
-        print("Error: ID produk tidak ditemukan.")
-        return
-
-    with open(productsfile, "w") as f:
-        for product in data_produk:
-            if product[0] != id_produk:
-                f.write(f"{product[0]},{product[1]},{product[2]},{product[3]}\n")
-
-    print("Produk berhasil dihapus")
 
 def kelola_produk():
     cur_page = 0
