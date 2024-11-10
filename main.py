@@ -140,6 +140,28 @@ def cek_produk():
         elif answer == "Keluar":
             break
 
+def hapus_produk():        
+    data_produk = load_data_produk()
+
+    id_produk = input("Masukkan ID produk: ")
+
+    produk_ditemukan = False
+    for product in data_produk:
+        if product[0] == id_produk:
+            produk_ditemukan = True
+            break
+
+    if not produk_ditemukan:
+        print("Error: ID produk tidak ditemukan.")
+        return
+
+    with open(productsfile, "w") as f:
+        for product in data_produk:
+            if product[0] != id_produk:
+                f.write(f"{product[0]},{product[1]},{product[2]},{product[3]}\n")
+
+    print("Produk berhasil dihapus")
+
 def kelola_produk():
     cur_page = 0
 
@@ -173,11 +195,9 @@ def kelola_produk():
         elif answer == "Edit Produk":
             edit_produk()
         elif answer == "Hapus Produk":
-            print("Hapus produk")
+            hapus_produk()
         elif answer == "Keluar":
             break
-
-        
 
 def main():
     

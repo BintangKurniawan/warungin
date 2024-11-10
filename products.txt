@@ -1,7 +1,8 @@
 1,funta,200,2000
 2,cola,7,1
 3,ambas,2,20
-4,ambas,3,20
-5,babas,29,99
+4,ambas,4,20
 6,ambas,23,24
 7,bus,20,2
+7,bca,2,2
+8,casan,2,1
