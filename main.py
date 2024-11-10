@@ -3,6 +3,7 @@ import os
 import tabulate
 import random
 import string
+from products.checkProduct import cek_produk
 productsfile = "products.txt"
 per_page = 5
 
@@ -15,44 +16,7 @@ def load_data_produk():
     with open(productsfile, "r") as f:
             return [line.strip().split(",") for line in f]
 
-# fungsi ini untuk mencari produk
-def cari_produk():
-    # variabel ini untuk menyimpan hasil pencarian
-    hasil = []
 
-    # variabel ini untuk menyimpan data produk
-    data_produk = load_data_produk()
-    
-    while True:
-        os.system('cls')
-
-        # logika ini untuk menampilkan hasil pencarian
-        if hasil:
-            print(tabulate.tabulate(hasil, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
-
-        # variabel ini untuk menampung pilihan user
-        answer = inquirer.select(
-            message="Pilih salah satu opsi:",
-            choices=["Cari Produk", "Keluar"],
-            default="Cari Produk"
-        ).execute()
-
-        if answer == "Cari Produk":
-            quary = input("Masukkan nama produk: ").title()
-
-            # variabel ini untuk mengosongkan variabel hasil sebelumnya
-            hasil = []
-            for product in data_produk:
-                if quary.lower() in product[1].lower():
-                    hasil.append(product)
-
-            # logika ini untuk menampilkan data yang ditemukan
-            if hasil:
-                print(tabulate.tabulate(hasil, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
-            else:
-                print("Produk tidak ditemukan")
-        elif answer == "Keluar":
-            break
 
 # fungsi ini untuk menambah produk
 def tambah_produk():
@@ -154,40 +118,6 @@ def hapus_produk():
                 f.write(f"{product[0]},{product[1]},{product[2]},{product[3]}\n")
 
     print("Produk berhasil dihapus")
-
-# fungsi ini untuk ngecek produk
-def cek_produk():
-    cur_page = 0
-
-    while True:
-        os.system('cls')
-
-        data_produk = load_data_produk()
-        
-        # variabel ini untuk menghitung total rows
-        total_rows = len(data_produk)
-        total_pages = (total_rows + per_page - 1)
-
-        start = cur_page * per_page
-        end = start + per_page
-        page_data = data_produk[start:end]
-
-        print(tabulate.tabulate(page_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
-
-        answer = inquirer.select(
-            message="Pilih salah satu opsi:",
-            choices=["Next Page", "Previous Page", "Cari Produk", "Keluar"],
-            default="Next Page"
-        ).execute()
-
-        if answer == "Next Page" and cur_page < total_pages - 1:
-            cur_page += 1
-        elif answer == "Previous Page" and cur_page > 0:
-            cur_page -= 1
-        elif answer == "Cari Produk":
-            cari_produk()
-        elif answer == "Keluar":
-            break
 
 # fungsi ini untuk ngelola produk
 def kelola_produk():
