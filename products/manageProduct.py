@@ -2,6 +2,8 @@ from InquirerPy import inquirer
 import os
 import tabulate
 from products.addProduct import tambah_produk
+from products.addStock import tambah_stok
+from products.editProduct import edit_produk
 productsfile = "products.txt"
 per_page = 5
 
@@ -38,10 +40,9 @@ def kelola_produk():
         elif answer == "Tambah Produk":
             tambah_produk()
         elif answer == "Tambah Stok":
-            # tambah_stok()
-            print("Tambah stok")
+            tambah_stok()
         elif answer == "Edit Produk":
-            # edit_produk()
+            edit_produk()
             print("Edit produk")
         elif answer == "Hapus Produk":
             # hapus_produk()
