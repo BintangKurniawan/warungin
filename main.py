@@ -4,6 +4,7 @@ import tabulate
 import random
 import string
 from products.checkProduct import cek_produk
+from products.manageProduct import kelola_produk
 productsfile = "products.txt"
 per_page = 5
 
@@ -16,29 +17,6 @@ def load_data_produk():
     with open(productsfile, "r") as f:
             return [line.strip().split(",") for line in f]
 
-
-
-# fungsi ini untuk menambah produk
-def tambah_produk():
-    data_produk = load_data_produk()
-
-    nama_produk = input("Masukkan nama produk: ").title()
-    stok_produk = input("Masukkan stok produk: ")
-    harga_produk = input("Masukkan harga produk: ")
-
-    # variabel ini untuk membuat id random
-    id_produk = randomizer_id()
-
-    # variabel ini untuk mengecek apakah id produk sudah ada
-    existing_ids = {product[0] for product in data_produk}
-    while id_produk in existing_ids:
-        id_produk = randomizer_id()
-
-    # variabel ini untuk menambahkan produk
-    with open(productsfile, "a") as f:
-        f.write(f"{id_produk},{nama_produk},{stok_produk},{harga_produk}\n")
-
-    print("Produk berhasil ditambahkan")
 
 # fungsi ini untuk mengedit produk
 def edit_produk():
@@ -119,43 +97,6 @@ def hapus_produk():
 
     print("Produk berhasil dihapus")
 
-# fungsi ini untuk ngelola produk
-def kelola_produk():
-    cur_page = 0
-
-    while True:
-        os.system('cls')
-
-        data_produk = load_data_produk()
-        total_rows = len(data_produk)
-        total_pages = (total_rows + per_page - 1)
-
-        start = cur_page * per_page
-        end = start + per_page
-        page_data = data_produk[start:end]
-
-        print(tabulate.tabulate(page_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
-
-        answer = inquirer.select(
-            message="Pilih salah satu opsi:",
-            choices=["Next Page", "Previous Page", "Tambah Produk", "Tambah Stok", "Edit Produk", "Hapus Produk", "Keluar"],
-            default="Next Page"
-        ).execute()
-
-        if answer == "Next Page" and cur_page < total_pages - 1:
-            cur_page += 1
-        elif answer == "Previous Page" and cur_page > 0:
-            cur_page -= 1
-        elif answer == "Tambah Produk":
-            tambah_produk()
-        elif answer == "Tambah Stok":
-            tambah_stok()
-        elif answer == "Edit Produk":
-            edit_produk()
-        elif answer == "Hapus Produk":
-            hapus_produk()
-        elif answer == "Keluar":
-            break
 
 def main():
     

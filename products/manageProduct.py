@@ -1,24 +1,22 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from products.searchProduct import cari_produk
+from products.addProduct import tambah_produk
 productsfile = "products.txt"
 per_page = 5
-
 
 def load_data_produk():
     with open(productsfile, "r") as f:
             return [line.strip().split(",") for line in f]
-# fungsi ini untuk ngecek produk
-def cek_produk():
+
+# fungsi ini untuk ngelola produk
+def kelola_produk():
     cur_page = 0
 
     while True:
         os.system('cls')
 
         data_produk = load_data_produk()
-        
-        # variabel ini untuk menghitung total rows
         total_rows = len(data_produk)
 
         start = cur_page * per_page
@@ -29,7 +27,7 @@ def cek_produk():
 
         answer = inquirer.select(
             message="Pilih salah satu opsi:",
-            choices=["Next Page", "Previous Page", "Cari Produk", "Keluar"],
+            choices=["Next Page", "Previous Page", "Tambah Produk", "Tambah Stok", "Edit Produk", "Hapus Produk", "Keluar"],
             default="Next Page"
         ).execute()
 
@@ -37,7 +35,16 @@ def cek_produk():
             cur_page += 1
         elif answer == "Previous Page" and cur_page > 0:
             cur_page -= 1
-        elif answer == "Cari Produk":
-            cari_produk()
+        elif answer == "Tambah Produk":
+            tambah_produk()
+        elif answer == "Tambah Stok":
+            # tambah_stok()
+            print("Tambah stok")
+        elif answer == "Edit Produk":
+            # edit_produk()
+            print("Edit produk")
+        elif answer == "Hapus Produk":
+            # hapus_produk()
+            print("Hapus produk")
         elif answer == "Keluar":
             break
