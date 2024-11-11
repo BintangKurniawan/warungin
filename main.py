@@ -1,16 +1,7 @@
 from InquirerPy import inquirer
 import os
-import tabulate
-import random
-import string
 from products.checkProduct import cek_produk
 from products.manageProduct import kelola_produk
-productsfile = "products.txt"
-per_page = 5
-
-# fungsi ini untuk membuat id random
-def randomizer_id():
-    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
 
 def main():
     
