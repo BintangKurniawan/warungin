@@ -2,13 +2,10 @@ from InquirerPy import inquirer
 import os
 import tabulate
 from products.searchProduct import cari_produk
+from datas.dataProducts import load_data_produk
 productsfile = "products.txt"
 per_page = 5
 
-
-def load_data_produk():
-    with open(productsfile, "r") as f:
-            return [line.strip().split(",") for line in f]
 # fungsi ini untuk ngecek produk
 def cek_produk():
     cur_page = 0

@@ -1,14 +1,11 @@
 import random
 import string
+from datas.dataProducts import load_data_produk
 productsfile = "products.txt"
 
 # fungsi ini untuk membuat id random
 def randomizer_id():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
-  
-def load_data_produk():
-    with open(productsfile, "r") as f:
-            return [line.strip().split(",") for line in f]
 
 # fungsi ini untuk menambah produk
 def tambah_produk():
