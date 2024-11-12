@@ -8,6 +8,7 @@ productsfile = "products.txt"
 def cari_produk():
     # variabel ini untuk menyimpan hasil pencarian
     hasil = []
+    table_data = [[product["id"], product["Nama"], product["stok"], product["harga"]] for product in hasil]
 
     # variabel ini untuk menyimpan data produk
     data_produk = load_data_produk()
@@ -17,7 +18,7 @@ def cari_produk():
 
         # logika ini untuk menampilkan hasil pencarian
         if hasil:
-            print(tabulate.tabulate(hasil, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
+            print(tabulate.tabulate(table_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
 
         # variabel ini untuk menampung pilihan user
         answer = inquirer.select(
@@ -32,12 +33,14 @@ def cari_produk():
             # variabel ini untuk mengosongkan variabel hasil sebelumnya
             hasil = []
             for product in data_produk:
-                if quary.lower() in product[1].lower():
+                if quary.lower() in product["Nama"].lower():
                     hasil.append(product)
 
             # logika ini untuk menampilkan data yang ditemukan
             if hasil:
-                print(tabulate.tabulate(hasil, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
+                table_data = [[product["id"], product["Nama"], product["stok"], product["harga"]] for product in hasil]
+
+                print(tabulate.tabulate(table_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
             else:
                 print("Produk tidak ditemukan")
         elif answer == "Keluar":

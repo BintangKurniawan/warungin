@@ -1,7 +1,8 @@
 import random
 import string
+import json
 from datas.dataProducts import load_data_produk
-productsfile = "products.txt"
+productsfile = "products.json"
 
 # fungsi ini untuk membuat id random
 def randomizer_id():
@@ -12,19 +13,27 @@ def tambah_produk():
     data_produk = load_data_produk()
 
     nama_produk = input("Masukkan nama produk: ").title()
-    stok_produk = input("Masukkan stok produk: ")
-    harga_produk = input("Masukkan harga produk: ")
+    stok_produk = int(input("Masukkan stok produk: "))
+    harga_produk = int(input("Masukkan harga produk: "))
 
     # variabel ini untuk membuat id random
     id_produk = randomizer_id()
 
     # variabel ini untuk mengecek apakah id produk sudah ada
-    existing_ids = {product[0] for product in data_produk}
+    existing_ids = {item["id"] for item in data_produk}
     while id_produk in existing_ids:
         id_produk = randomizer_id()
 
-    # variabel ini untuk menambahkan produk
-    with open(productsfile, "a") as f:
-        f.write(f"{id_produk},{nama_produk},{stok_produk},{harga_produk}\n")
+    new_product = {
+        "id": id_produk,
+        "Nama": nama_produk,
+        "stok": stok_produk,
+        "harga": harga_produk
+    }
+
+    data_produk.append(new_product)
+
+    with open(productsfile, "w") as f:
+        json.dump({"products": data_produk}, f, indent=4)
 
     print("Produk berhasil ditambahkan")
