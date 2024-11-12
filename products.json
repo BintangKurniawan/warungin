@@ -1,0 +1,50 @@
+[
+  {
+    "id": "9FIH",
+    "nama": "Beras",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "GESQ",
+    "nama": "Cola",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "3IIJ",
+    "nama": "Gula",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "4IJK",
+    "nama": "Garam",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "6IJK",
+    "nama": "Telur",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "Q6BD",
+    "nama": "Uyah",
+    "stok": 20,
+    "harga": 20
+  },
+  {
+    "id": "OWJ9",
+    "nama": "Kecap",
+    "stok": 20,
+    "harga": 20
+  },
+  {
+    "id": "0RZN",
+    "nama": "Bas",
+    "stok": 24,
+    "harga": 1
+  }
+]
