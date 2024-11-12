@@ -1,5 +1,6 @@
 from datas.dataProducts import load_data_produk
-productsfile = "products.txt"
+import json
+productsfile = "products.json"
 
 # fungsi ini untuk mengedit produk
 def edit_produk():
@@ -9,23 +10,25 @@ def edit_produk():
 
     produk_ditemukan = False
     for product in data_produk:
-        if product[0] == id_produk:
+        if product["id"] == id_produk:
             produk_ditemukan = True
+
+            # Prompt for new values
+            nama_produk = input("Masukkan nama produk baru: ") or product["Nama"]
+            stok_produk = input("Masukkan stok produk baru: ") or product["stok"]
+            harga_produk = input("Masukkan harga produk baru: ") or product["harga"]
+
+            # Update the product information
+            product["Nama"] = nama_produk
+            product["stok"] = stok_produk
+            product["harga"] = harga_produk
             break
 
     if not produk_ditemukan:
         print("Error: ID produk tidak ditemukan.")
         return
 
-    nama_produk = input("Masukkan nama produk: ")
-    stok_produk = input("Masukkan stok produk: ")
-    harga_produk = input("Masukkan harga produk: ")
-
     with open(productsfile, "w") as f:
-        for product in data_produk:
-            if product[0] == id_produk:
-                f.write(f"{id_produk},{nama_produk},{stok_produk},{harga_produk}\n")
-            else:
-                f.write(f"{product[0]},{product[1]},{product[2]},{product[3]}\n")
+        json.dump(data_produk, f, indent=4)
 
     print("Produk berhasil diedit")
