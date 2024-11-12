@@ -26,7 +26,7 @@ def tambah_produk():
     # variabel ini untuk menyimpan data produk
     new_product = {
         "id": id_produk,
-        "Nama": nama_produk,
+        "nama": nama_produk,
         "stok": stok_produk,
         "harga": harga_produk
     }

@@ -7,7 +7,7 @@ productsfile = "products.txt"
 def cari_produk():
     # variabel ini untuk menyimpan hasil pencarian
     hasil = []
-    table_data = [[product["id"], product["Nama"], product["stok"], product["harga"]] for product in hasil]
+    table_data = [[product["id"], product["nama"], product["stok"], product["harga"]] for product in hasil]
 
     # variabel ini untuk menyimpan data produk
     data_produk = load_data_produk()
@@ -32,12 +32,12 @@ def cari_produk():
             # variabel ini untuk mengosongkan variabel hasil sebelumnya
             hasil = []
             for product in data_produk:
-                if quary.lower() in product["Nama"].lower():
+                if quary.lower() in product["nama"].lower():
                     hasil.append(product)
 
             # logika ini untuk menampilkan data yang ditemukan
             if hasil:
-                table_data = [[product["id"], product["Nama"], product["stok"], product["harga"]] for product in hasil]
+                table_data = [[product["id"], product["nama"], product["stok"], product["harga"]] for product in hasil]
 
                 print(tabulate.tabulate(table_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
             else:

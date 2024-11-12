@@ -12,11 +12,11 @@ def edit_produk():
         if product["id"] == id_produk:
             produk_ditemukan = True
 
-            nama_produk = input("Masukkan nama produk baru: ") or product["Nama"]
+            nama_produk = input("Masukkan nama produk baru: ") or product["nama"]
             stok_produk = input("Masukkan stok produk baru: ") or product["stok"]
             harga_produk = input("Masukkan harga produk baru: ") or product["harga"]
         
-            product["Nama"] = nama_produk
+            product["nama"] = nama_produk
             product["stok"] = stok_produk
             product["harga"] = harga_produk
             break

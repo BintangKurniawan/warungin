@@ -20,7 +20,7 @@ def kelola_produk():
 
         start = cur_page * per_page
         end = start + per_page
-        page_data = [[item["id"], item["Nama"], item["stok"], item["harga"]] for item in data_produk[start:end]]
+        page_data = [[item["id"], item["nama"], item["stok"], item["harga"]] for item in data_produk[start:end]]
 
         print(tabulate.tabulate(page_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
 
