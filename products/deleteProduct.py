@@ -1,5 +1,6 @@
 from datas.dataProducts import load_data_produk
-productsfile = "products.txt"
+import json
+productsfile = "products.json"
 
 # fungsi ini untuk menghapus produk
 def hapus_produk():        
@@ -7,19 +8,15 @@ def hapus_produk():
 
     id_produk = input("Masukkan ID produk: ").upper()
 
-    produk_ditemukan = False
-    for product in data_produk:
-        if product[0] == id_produk:
-            produk_ditemukan = True
-            break
+    original_length = len(data_produk)
 
-    if not produk_ditemukan:
+    data_produk = [product for product in data_produk if product["id"] != id_produk]
+
+    if len(data_produk) == original_length:
         print("Error: ID produk tidak ditemukan.")
         return
 
     with open(productsfile, "w") as f:
-        for product in data_produk:
-            if product[0] != id_produk:
-                f.write(f"{product[0]},{product[1]},{product[2]},{product[3]}\n")
+        json.dump(data_produk, f, indent=4)
 
     print("Produk berhasil dihapus")
