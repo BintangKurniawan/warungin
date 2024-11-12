@@ -34,6 +34,6 @@ def tambah_produk():
     data_produk.append(new_product)
 
     with open(productsfile, "w") as f:
-        json.dump({"products": data_produk}, f, indent=4)
+        json.dump(data_produk, f, indent=4)
 
     print("Produk berhasil ditambahkan")
