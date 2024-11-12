@@ -5,11 +5,10 @@ from products.addProduct import tambah_produk
 from products.addStock import tambah_stok
 from products.editProduct import edit_produk
 from products.deleteProduct import hapus_produk
-from datas.dataProducts import load_data_produk
+from data.data import load_data_produk
 productsfile = "products.txt"
 per_page = 5
 
-# fungsi ini untuk ngelola produk
 def kelola_produk():
     cur_page = 0
 

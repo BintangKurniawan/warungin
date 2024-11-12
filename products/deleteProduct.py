@@ -1,8 +1,7 @@
-from datas.dataProducts import load_data_produk
+from data.data import load_data_produk
 import json
 productsfile = "products.json"
 
-# fungsi ini untuk menghapus produk
 def hapus_produk():        
     data_produk = load_data_produk()
 
@@ -10,6 +9,7 @@ def hapus_produk():
 
     original_length = len(data_produk)
 
+    # menulis ulang semua data produk kecuali produk yang ingin dihapus
     data_produk = [product for product in data_produk if product["id"] != id_produk]
 
     if len(data_produk) == original_length:

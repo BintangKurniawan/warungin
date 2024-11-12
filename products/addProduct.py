@@ -1,14 +1,13 @@
 import random
 import string
 import json
-from datas.dataProducts import load_data_produk
+from data.data import load_data_produk
 productsfile = "products.json"
 
 # fungsi ini untuk membuat id random
 def randomizer_id():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
 
-# fungsi ini untuk menambah produk
 def tambah_produk():
     data_produk = load_data_produk()
 
@@ -16,14 +15,15 @@ def tambah_produk():
     stok_produk = int(input("Masukkan stok produk: "))
     harga_produk = int(input("Masukkan harga produk: "))
 
-    # variabel ini untuk membuat id random
+    # variabel ini untuk mendapatkan id random
     id_produk = randomizer_id()
 
-    # variabel ini untuk mengecek apakah id produk sudah ada
+    # mengecek apakah id produk sudah ada
     existing_ids = {item["id"] for item in data_produk}
     while id_produk in existing_ids:
         id_produk = randomizer_id()
 
+    # variabel ini untuk menyimpan data produk
     new_product = {
         "id": id_produk,
         "Nama": nama_produk,

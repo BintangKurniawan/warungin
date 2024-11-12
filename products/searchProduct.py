@@ -1,10 +1,9 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from datas.dataProducts import load_data_produk
+from data.data import load_data_produk
 productsfile = "products.txt"
 
-# fungsi ini untuk mencari produk
 def cari_produk():
     # variabel ini untuk menyimpan hasil pencarian
     hasil = []
