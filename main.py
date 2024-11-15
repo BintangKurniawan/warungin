@@ -4,6 +4,7 @@ import tabulate
 import random
 import string
 from products.checkProduct import cek_produk
+from pengutang.checkpengutang import kelola_pengutang
 productsfile = "products.txt"
 per_page = 5
 
@@ -176,7 +177,7 @@ def main():
         elif answer == "Cek Pendataan Harian":
             print("Cek pengutang")
         elif answer == "Cek Pengutang":
-            print("Cek pengutang")
+            kelola_pengutang()
         elif answer == "Keluar":
             print("Exit")
             break
