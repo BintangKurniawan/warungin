@@ -21,22 +21,22 @@ def tambah_pengutang():
     while id_pengutang in existing_ids:
         id_pengutang = randomizer_id()
 
-    # variabel ini untuk menambahkan pengutang
-    for i in range(2):
-        nama_pengutang = input(f"Masukkan nama pengutang ke-{i + 1}: ")
+    nama_pengutang = input(f"Masukkan nama pengutang: ")
 
-        while True:
-            try:
-                hutang = int(input(f"Masukkan jumlah hutang {nama_pengutang} (maksimal {batas_hutang_perorang}): "))
-                if hutang < 0:
-                    print("Jumlah hutang tidak boleh kurang dari 0 rupiah.")
-                elif hutang > batas_hutang_perorang:
-                    print(f"Jumlah hutang melebihi batas maksimal {batas_hutang_perorang}. Silakan kurangi jumlah hutang Anda.")
-                else:
-                    break
-            except ValueError:
+    while True:
+        try:
+            hutang = int(input(f"Masukkan jumlah hutang {nama_pengutang} (maksimal {batas_hutang_perorang}): "))
+            if hutang < 0:
+                print("Jumlah hutang tidak boleh kurang dari 0 rupiah.")
+            elif hutang > batas_hutang_perorang:
+                print(f"Jumlah hutang melebihi batas maksimal {batas_hutang_perorang}. Silakan kurangi jumlah hutang Anda.")
+            else:
+                break
+        except ValueError:
                 print("Input tidak valid. Harap masukkan data dengan benar.")
-
-        pengutang.append((nama_pengutang, hutang))
+    # variabel ini untuk menambahkan pengutang
+    
+    with open(pengutangfile, "a") as f:
+         f.write(f"{id_pengutang},{nama_pengutang}, {hutang}\n")
 
     print("pengutang berhasil ditambahkan")

@@ -1,7 +1,8 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-
+from pengutang.addPengutang import tambah_pengutang
+from pengutang.editPengutang import edit_pengutang
 pengutangfile = "pengutang.txt"
 per_page = 2
 
@@ -28,9 +29,9 @@ def kelola_pengutang():
         ).execute()
 
         if answer == "Tambah Pengutang":
-            print()
+            tambah_pengutang()
         elif answer == "Edit Pengutang":
-            print()
+            edit_pengutang()
         elif answer == "Hapus Pengutang":
             print()
         elif answer == "Keluar":
