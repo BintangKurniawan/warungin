@@ -27,10 +27,13 @@ def edit_produk():
             # Proses pengeditan sesuai pilihan
             if answer == "Nama":
                 produk_terpilih["Nama"] = input("Masukkan nama produk baru: ").title()
+                print("Nama produk berhasil diedit")
             elif answer == "Stok":
                 produk_terpilih["stok"] = input("Masukkan stok produk baru: ") 
+                print("Stok produk berhasil diedit")
             elif answer == "Harga":
                 produk_terpilih["harga"] = input("Masukkan harga produk baru: ") 
+                print("Harga produk berhasil diedit")
             elif answer == "Keluar":
                 break
             
