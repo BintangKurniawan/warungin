@@ -1,7 +1,7 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from products.searchProduct import cari_penjualan
+from pendataan.searchpenjualan import cari_penjualan
 penjualanfile = "pendataan.txt"
 per_page = 5
 
@@ -39,6 +39,6 @@ def cek_penjualan():
         elif answer == "Previous Page" and cur_page > 0:
             cur_page -= 1
         elif answer == "Cari Penjualan":
-           print()
+            cari_penjualan()
         elif answer == "Keluar":
             break
