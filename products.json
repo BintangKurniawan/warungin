@@ -25,9 +25,9 @@
     },
     {
         "id": "6IJK",
-        "Nama": "Telur",
-        "stok": 100,
-        "harga": 10000
+        "Nama": "Ndog",
+        "stok": "200",
+        "harga": "10000"
     },
     {
         "id": "Q6BD",
