@@ -3,6 +3,7 @@ from data.data import load_data_produk
 import json
 productsfile = "products.json"
 def edit_produk():
+    from control import control
     data_produk = load_data_produk()
     while True:
         # Loop khusus untuk memastikan ID produk yang valid dimasukkan
@@ -35,7 +36,7 @@ def edit_produk():
                 produk_terpilih["harga"] = input("Masukkan harga produk baru: ") 
                 print("Harga produk berhasil diedit")
             elif answer == "Keluar":
-                break
+                return control()
             
             edit_lagi = inquirer.select(
                 message="Apakah ingin mengedit lagi?",

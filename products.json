@@ -19,7 +19,7 @@
     },
     {
         "id": "4IJK",
-        "Nama": "Garam",
+        "Nama": "Uyah",
         "stok": 100,
         "harga": 10000
     },
@@ -45,6 +45,6 @@
         "id": "0RZN",
         "Nama": "Bas",
         "stok": 24,
-        "harga": 1
+        "harga": "20000"
     }
 ]
