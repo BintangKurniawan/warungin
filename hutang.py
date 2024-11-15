@@ -1,4 +1,4 @@
-from inquirerPy import inquirer
+from InquirerPy import inquirer
 import os
 import tabulate
 import random
@@ -9,6 +9,7 @@ per_page = 2
 
 # fungsi ini untuk membuat id random
 def randomizer_id():
+    
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
 
 # fungsi ini untuk load data pengutang
