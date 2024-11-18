@@ -11,7 +11,6 @@ def load_data_pengutang():
             return [line.strip().split(",") for line in f]
 
 def kelola_pengutang():
-    cur_page = 0
 
     while True:
         os.system('cls')
