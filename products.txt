@@ -1,8 +1,0 @@
-9FIH,nipis,20,1000
-GESQ,cola,10,5000
-3IIJ,jeruk,20,1000
-2332,anggur,10,5000
-E322,melon,20,1000
-2211,mangan,10,5000
-PP89,lotek,20,1000
-111Q,ramen,10,5000

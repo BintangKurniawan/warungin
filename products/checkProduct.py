@@ -3,7 +3,6 @@ import os
 import tabulate
 from products.searchProduct import cari_produk
 from data.data import load_data_produk
-productsfile = "products.txt"
 per_page = 5
 
 def cek_produk():

@@ -2,7 +2,6 @@ from InquirerPy import inquirer
 import os
 import tabulate
 from data.data import load_data_produk
-productsfile = "products.txt"
 
 def cari_produk():
     # variabel ini untuk menyimpan hasil pencarian
