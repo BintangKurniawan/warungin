@@ -30,7 +30,7 @@ def cek_penjualan():
 
         answer = inquirer.select(
             message="Pilih salah satu opsi:",
-            choices=["Next Page", "Previous Page", "Cari Penjualan", "Keluar"],
+            choices=["Next Page", "Previous Page", "Update Penjualan", "Cari Penjualan", "Read Penjualan" "Keluar"],
             default="Next Page"
         ).execute()
 
