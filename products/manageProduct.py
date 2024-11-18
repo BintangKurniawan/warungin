@@ -16,6 +16,8 @@ def kelola_produk():
         os.system('cls')
 
         data_produk = load_data_produk()
+        data_produk = list(reversed(data_produk))
+
         total_rows = len(data_produk)
 
         start = cur_page * per_page

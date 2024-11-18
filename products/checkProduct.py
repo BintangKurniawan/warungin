@@ -13,7 +13,7 @@ def cek_produk():
         os.system('cls')
 
         data_produk = load_data_produk()
-        
+        data_produk = list(reversed(data_produk))
         # variabel ini untuk menghitung total rows
         total_rows = len(data_produk)
 
