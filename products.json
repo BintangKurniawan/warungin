@@ -46,5 +46,11 @@
     "Nama": "Bas",
     "stok": 24,
     "harga": "20000"
+  },
+  {
+    "id": "TML2",
+    "Nama": "Amba",
+    "stok": 12,
+    "harga": 12
   }
 ]
