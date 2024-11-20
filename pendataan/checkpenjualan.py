@@ -2,6 +2,7 @@ from InquirerPy import inquirer
 import os
 import tabulate
 from pendataan.searchpenjualan import cari_penjualan
+from pendataan.addDailySale import addDailySale
 penjualanfile = "pendataan.txt"
 per_page = 5
 
@@ -30,7 +31,7 @@ def cek_penjualan():
 
         answer = inquirer.select(
             message="Pilih salah satu opsi:",
-            choices=["Next Page", "Previous Page", "Update Penjualan", "Cari Penjualan", "Read Penjualan" "Keluar"],
+            choices=["Next Page", "Previous Page","Tambah Penjualan", "Update Penjualan", "Cari Penjualan", "Read Penjualan", "Keluar"],
             default="Next Page"
         ).execute()
 
@@ -38,6 +39,8 @@ def cek_penjualan():
             cur_page += 1
         elif answer == "Previous Page" and cur_page > 0:
             cur_page -= 1
+        elif answer == "Tambah Penjualan":
+            addDailySale()
         elif answer == "Cari Penjualan":
             cari_penjualan()
         elif answer == "Keluar":
