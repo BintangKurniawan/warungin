@@ -1,0 +1,56 @@
+[
+  {
+    "id": "9FIH",
+    "Nama": "Beras",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "GESQ",
+    "Nama": "Cola",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "3IIJ",
+    "Nama": "Gula",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "4IJK",
+    "Nama": "Uyah",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "6IJK",
+    "Nama": "Ndog",
+    "stok": "200",
+    "harga": "10000"
+  },
+  {
+    "id": "Q6BD",
+    "Nama": "Uyah",
+    "stok": 20,
+    "harga": 20
+  },
+  {
+    "id": "OWJ9",
+    "Nama": "Kecap",
+    "stok": 20,
+    "harga": 20
+  },
+  {
+    "id": "0RZN",
+    "Nama": "Bas",
+    "stok": 24,
+    "harga": "20000"
+  },
+  {
+    "id": "TML2",
+    "Nama": "Amba",
+    "stok": 12,
+    "harga": 12
+  }
+]

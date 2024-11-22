@@ -1,2 +1,0 @@
-9FIH,nipis,20,1000
-GESQ,cola,10,5000
