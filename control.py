@@ -2,6 +2,7 @@ from InquirerPy import inquirer
 import os
 from products.checkProduct import cek_produk
 from products.manageProduct import kelola_produk
+from pendataan.checkpenjualan import cek_penjualan
 
 def control():
     while True:
@@ -19,7 +20,7 @@ def control():
         elif answer == "Kelola Produk":
             kelola_produk()
         elif answer == "Cek Pendataan Harian":
-            print("Cek pengutang")
+            cek_penjualan()
         elif answer == "Cek Pengutang":
             print("Cek pengutang")
         elif answer == "Keluar":
