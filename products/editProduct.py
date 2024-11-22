@@ -27,7 +27,7 @@ def edit_produk():
             
             # Proses pengeditan sesuai pilihan
             if answer == "Nama":
-                produk_terpilih["Nama"] = input("Masukkan nama produk baru: ").title()
+                produk_terpilih["nama"] = input("Masukkan nama produk baru: ").title()
                 print("Nama produk berhasil diedit")
             elif answer == "Stok":
                 produk_terpilih["stok"] = input("Masukkan stok produk baru: ") 
