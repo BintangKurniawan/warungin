@@ -1,15 +1,15 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from data.data import load_data_produk
+from data.data import loadDataProduk
 
-def cari_produk():
+def cariProduk():
     # variabel ini untuk menyimpan hasil pencarian
     hasil = []
     table_data = [[product["id"], product["nama"], product["stok"], product["harga"]] for product in hasil]
 
     # variabel ini untuk menyimpan data produk
-    data_produk = load_data_produk()
+    data_produk = loadDataProduk()
     
     while True:
         os.system('cls')

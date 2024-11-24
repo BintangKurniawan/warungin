@@ -12,7 +12,7 @@ def load_data_penjualan():
     with open(penjualanfile, "r") as f:
             return [line.strip().split(",") for line in f]
 # fungsi ini untuk ngecek penjualan
-def cek_penjualan():
+def cekPenjualan():
     cur_page = 0
 
     while True:

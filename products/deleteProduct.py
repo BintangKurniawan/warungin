@@ -1,9 +1,9 @@
-from data.data import load_data_produk
+from data.data import loadDataProduk
 import json
 productsfile = "products.json"
 
-def hapus_produk():        
-    data_produk = load_data_produk()
+def hapusProduk():        
+    data_produk = loadDataProduk()
 
     id_produk = input("Masukkan ID produk: ").upper()
 

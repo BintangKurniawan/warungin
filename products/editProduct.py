@@ -1,10 +1,10 @@
 from InquirerPy import inquirer
-from data.data import load_data_produk
+from data.data import loadDataProduk
 import json
 productsfile = "products.json"
-def edit_produk():
+def editProduk():
     from control import control
-    data_produk = load_data_produk()
+    data_produk = loadDataProduk()
     while True:
         # Loop khusus untuk memastikan ID produk yang valid dimasukkan
         produk_ditemukan = False

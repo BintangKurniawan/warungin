@@ -1,4 +1,4 @@
-from data.data import loadDailyData, load_data_produk
+from data.data import loadDailyData, loadDataProduk
 import json
 dailyFile = "dailySales.json"
 productsFile = "products.json"
@@ -6,7 +6,7 @@ productsFile = "products.json"
 def addDailySale():
   # Memuat data penjualan harian dan data produk dari file JSON
   dataDaily = loadDailyData()
-  dataProducts = load_data_produk()
+  dataProducts = loadDataProduk()
   
   # Membuat mapping produk berdasarkan nama produk (huruf kecil) untuk mempermudah pencarian
   productMap = {
