@@ -1,6 +1,6 @@
 from InquirerPy import inquirer
 import os
-from products.checkProduct import cek_produk
+from products.checkProduct import cekProduk
 from products.manageProduct import kelola_produk
 from pendataan.checkpenjualan import cek_penjualan
 
@@ -16,7 +16,7 @@ def control():
         ).execute()
 
         if answer == "Cek Produk":
-            cek_produk()
+            cekProduk()
         elif answer == "Kelola Produk":
             kelola_produk()
         elif answer == "Cek Pendataan Harian":
