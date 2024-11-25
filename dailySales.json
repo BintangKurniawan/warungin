@@ -9,6 +9,11 @@
             "Nama Produk": "Gula",
             "Jumlah": 10,
             "Profit": 100000
+        },
+        {
+            "Nama Produk": "Uyah",
+            "Jumlah": 20,
+            "Profit": 400
         }
     ],
     "2024-11-19": [

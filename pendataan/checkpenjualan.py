@@ -1,51 +1,49 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from pendataan.searchpenjualan import cari_penjualan
 from pendataan.addDailySale import addDailySale
 from pendataan.showDailySaleByDate import dailySaleByDate
-from pendataan.readpenjualan import showAllDailySalesDates
 from data.data import loadDailyData
+perPage = 5  # Jumlah entri yang ditampilkan per halaman
+
 
 # fungsi ini untuk ngecek penjualan
 def cekPenjualan():
-    os.system('cls')  # Membersihkan layar
-
-    data = loadDailyData()  # Memuat data penjualan
-
-    # Mengumpulkan data penjualan dalam format yang diinginkan
-    filteredData = [
-        [date, item["Nama Produk"], item["Jumlah"], item["Profit"]]
-        for date in data for item in data[date]
-    ]
-
-    # Pastikan ada data untuk ditampilkan
-    if not filteredData:
-        print("Tidak ada data untuk ditampilkan.")
-        inquirer.text(message="Tekan Enter untuk kembali ke menu utama.").execute()
-        return
-
-    # Menampilkan keseluruhan data penjualan
-    print(tabulate.tabulate(filteredData, headers=["Tanggal", "Nama Produk", "Jumlah", "Profit"], tablefmt="grid", stralign="center", numalign="center"))
-
+    data = loadDailyData()  # Memuat data penjualan harian
+    allDates = list(data.keys())  # Mendapatkan semua tanggal dari data
+    curPage = 0  # Halaman awal
     while True:
+        os.system('cls') 
+        # Pagination setup
+        totalDates = len(allDates)
+        totalPages = (totalDates + perPage - 1) // perPage  # Hitung total halaman
+        start = curPage * perPage
+        end = start + perPage
+        pageDates = allDates[start:end]
+        # Menampilkan semua tanggal dan data penjualan terkait
+        tableData = []
+        for date in pageDates:
+            for item in data[date]:
+                tableData.append([date, item["Nama Produk"], item["Jumlah"], item["Profit"]])
+        # Menampilkan data untuk halaman saat ini
+        headers = ["Tanggal", "Nama Produk", "Jumlah", "Profit"]
+        print(tabulate.tabulate(tableData, headers=headers, tablefmt="grid", stralign="center", numalign="center"))
+        print(f"\nHalaman {curPage + 1} dari {totalPages}")
+            
+
         answer = inquirer.select(
             message="Pilih salah satu opsi:",
-            choices=["Cek Penjualan", "Filter tanggal", "Tambah Penjualan", "Update Penjualan", "Cari Penjualan", "Keluar"],
-            default="Cek Penjualan"
+            choices=["Next Page", "Previous Page", "Filter tanggal", "Tambah Penjualan", "Update Penjualan", "Keluar"],
+            default="Next Page"
         ).execute()
 
-        if answer == "Tambah Penjualan":
+        if answer == "Next Page" and curPage < totalPages - 1:
+            curPage += 1
+        elif answer == "Previous Page" and curPage > 0:
+            curPage -= 1
+        elif answer == "Tambah Penjualan":
             addDailySale()
-        elif answer == "Cari Penjualan":
-            cari_penjualan()
-        elif answer == "Cek Penjualan":
-            showAllDailySalesDates()
         elif answer == "Filter tanggal":
             dailySaleByDate()
         elif answer == "Keluar":
             break
-
-# Contoh pemanggilan fungsi
-if __name__ == "__main__":
-    cekPenjualan()
