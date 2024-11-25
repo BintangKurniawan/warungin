@@ -5,7 +5,7 @@ from products.searchProduct import cariProduk
 from data.data import loadDataProduk
 perPage = 5
 
-def cek_produk():
+def cekProduk():
     curPage = 0
 
     while True:
