@@ -1,15 +1,15 @@
 import random
 import string
 import json
-from data.data import load_data_produk
+from data.data import loadDataProduk
 productsfile = "products.json"
 
 # fungsi ini untuk membuat id random
 def randomizer_id():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
 
-def tambah_produk():
-    data_produk = load_data_produk()
+def tambahProduk():
+    data_produk = loadDataProduk()
 
     nama_produk = input("Masukkan nama produk: ").title()
     stok_produk = int(input("Masukkan stok produk: "))

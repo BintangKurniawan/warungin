@@ -1,0 +1,26 @@
+{
+    "2024-11-20": [
+        {
+            "Nama Produk": "Beras",
+            "Jumlah": 3,
+            "Profit": 30000
+        },
+        {
+            "Nama Produk": "wewe",
+            "Jumlah": 3,
+            "Profit": 30000
+        },
+        {
+            "Nama Produk": "qqqq",
+            "Jumlah": 3,
+            "Profit": 30000
+        }
+    ],
+    "2024-11-19": [
+        {
+            "Nama Produk": "Gula",
+            "Jumlah": 10,
+            "Profit": 100000
+        }
+    ]
+}

@@ -1,25 +1,25 @@
-from data.data import load_data_produk
+from data.data import loadDataProduk
 import json
 productsfile = "products.json"
 
-def tambah_stok():
-    data_produk = load_data_produk()
+def tambahStok():
+    dataProduk = loadDataProduk()
 
-    id_produk = input("Masukkan ID produk: ").upper()
-    stok_produk = int(input("Masukkan stok produk: "))
+    idProduk = input("Masukkan ID produk: ").upper()
+    stokProduk = int(input("Masukkan stok produk: "))
 
-    produk_ditemukan = False
-    for product in data_produk:
-        if product["id"] == id_produk:
-            product["stok"] = product["stok"] + stok_produk
-            produk_ditemukan = True
+    produkDitemukan = False
+    for product in dataProduk:
+        if product["id"] == idProduk:
+            product["stok"] = product["stok"] + stokProduk
+            produkDitemukan = True
             break
 
-    if not produk_ditemukan:
+    if not produkDitemukan:
         print("Error: ID produk tidak ditemukan.")
         return
 
     with open(productsfile, "w") as f:
-        json.dump(data_produk, f, indent=4)
+        json.dump(dataProduk, f, indent=4)
 
     print("Stok berhasil ditambahkan")

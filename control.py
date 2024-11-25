@@ -1,7 +1,8 @@
 from InquirerPy import inquirer
 import os
-from products.checkProduct import cek_produk
-from products.manageProduct import kelola_produk
+from products.checkProduct import cekProduk
+from products.manageProduct import kelolaProduk
+from pendataan.checkpenjualan import cekPenjualan
 
 def control():
     while True:
@@ -15,11 +16,11 @@ def control():
         ).execute()
 
         if answer == "Cek Produk":
-            cek_produk()
+            cekProduk()
         elif answer == "Kelola Produk":
-            kelola_produk()
+            kelolaProduk()
         elif answer == "Cek Pendataan Harian":
-            print("Cek pengutang")
+            cekPenjualan()
         elif answer == "Cek Pengutang":
             print("Cek pengutang")
         elif answer == "Keluar":
