@@ -50,7 +50,7 @@ def tambah_pengutang():
             except ValueError:
                 print("Input tidak valid. Harap masukkan data dengan benar.")
 
-        pengutang.append((nama_pengutang, jumlah_mengutang))
+        pengutang.append((nama_pengutang, hutang))
 
     print("pengutang berhasil ditambahkan")
 

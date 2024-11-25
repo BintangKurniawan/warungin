@@ -40,3 +40,27 @@ def tambah_pengutang():
          f.write(f"{id_pengutang},{nama_pengutang}, {hutang}\n")
 
     print("pengutang berhasil ditambahkan")
+
+def cek_jumlah_pengutang ():
+    pengutang = []
+    
+    while True:
+        if len(pengutang) >= 2:
+            print("Jumlah pengutang sudah mencapai batas maksimum. Mohon maaf tidak bisa menambah pengutang yang baru")
+        break
+
+
+def tambah_utang():
+    data_pengutang = load_data_pengutang()
+    
+    while True:
+        nama = input("Masukkan nama pengutang (atau 'exit' untuk keluar): ")
+        if nama.lower() == 'exit':
+            break
+        
+        jumlah_hutang = float(input("Masukkan jumlah hutang: "))
+
+        with open(pengutangfile, "w") as f:
+           f.write(f"{nama},{jumlah_hutang}\n")
+
+    print("jumlah hutang baru berhasil ditambahkan")
