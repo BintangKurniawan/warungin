@@ -10,19 +10,21 @@ def kelola_pengutang():
         os.system('cls')
         data = loadDataPengutang()
         allId = list(data.keys())
-        page_data = []
-        for id in allId:
-            nama_pengutang = data[id]["Nama Pengutang"]
-            total_hutang = data[id]["Total Hutang"]
-            barang_list = data[id]["Barang"]
-        
-        # Gabungkan nama produk dari daftar barang
-            barang = ", ".join([barang["Nama Produk"] for barang in barang_list])
-        
-        # Tambahkan data ke page_data
-            page_data.append([id, nama_pengutang, total_hutang, barang]) 
 
-        print(tabulate.tabulate(page_data, headers=["ID", "Nama", "Jumlah Mengutang", "Barang"], tablefmt="grid", stralign="center", numalign="center"))
+        if(data):
+            page_data = []
+            for id in allId:
+                nama_pengutang = data[id]["Nama Pengutang"]
+                total_hutang = data[id]["Total Hutang"]
+                barang_list = data[id]["Barang"]
+            
+            # Gabungkan nama produk dari daftar barang
+                barang = ", ".join([barang["Nama Produk"] for barang in barang_list])
+            
+            # Tambahkan data ke page_data
+                page_data.append([id, nama_pengutang, total_hutang, barang]) 
+
+            print(tabulate.tabulate(page_data, headers=["ID", "Nama", "Jumlah Mengutang", "Barang"], tablefmt="grid", stralign="center", numalign="center"))
 
         answer = inquirer.select(
             message="Pilih salah satu opsi:",

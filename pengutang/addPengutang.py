@@ -4,6 +4,7 @@ import json
 from InquirerPy import inquirer
 from data.data import loadDataPengutang
 pengutangFile = "pengutang.json"
+from datetime import datetime
 
 
 def randomizer_id():
@@ -48,12 +49,20 @@ def tambah_pengutang():
     }
 
     while True:
-        nama_barang = input("Masukkan nama barang (atau 'selesai' untuk keluar): ")
-        if nama_barang.lower() == 'selesai':
+        answer = inquirer.select(
+            message="Pilih salah satu opsi:",
+            choices=["Tambah Barang", "Selesai"],
+            default="Tambah Barang"
+        ).execute()
+        
+        if answer == "Selesai":
             break
+        
+
+        nama_barang = input("Masukkan nama barang: ")
 
         jumlah_barang = int(input("Masukkan jumlah barang: "))
-        tanggal_hutang = input("Masukkan tanggal hutang (YYYY-MM-DD): ")
+        tanggal_hutang = datetime.now().strftime("%Y-%m-%d")
 
         barang = {
             "Nama Produk": nama_barang,
@@ -86,19 +95,3 @@ def tambahPengutang():
         else:
             tambah_pengutang()
             break
-
-
-# def tambah_utang():
-#     data_pengutang = load_data_pengutang()
-    
-#     while True:
-#         nama = input("Masukkan nama pengutang (atau 'exit' untuk keluar): ")
-#         if nama.lower() == 'exit':
-#             break
-        
-#         jumlah_hutang = float(input("Masukkan jumlah hutang: "))
-
-#         with open(pengutangfile, "w") as f:
-#            f.write(f"{nama},{jumlah_hutang}\n")
-
-#     print("jumlah hutang baru berhasil ditambahkan")
