@@ -3,11 +3,12 @@ import os
 import tabulate
 from pengutang.addPengutang import tambahPengutang
 from pengutang.editPengutang import edit_pengutang
+from pengutang.deletePengutang import hapus_pengutang
 from data.data import loadDataPengutang
 
 def kelola_pengutang():
     while True:
-        os.system('cls')
+        # os.system('cls')
         data = loadDataPengutang()
         allId = list(data.keys())
 
@@ -37,6 +38,6 @@ def kelola_pengutang():
         elif answer == "Edit Pengutang":
             edit_pengutang()
         elif answer == "Hapus Pengutang":
-            print()
+            hapus_pengutang()
         elif answer == "Keluar":
             break
