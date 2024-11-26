@@ -3,23 +3,23 @@ import os
 import tabulate
 from pengutang.addPengutang import tambah_pengutang
 from pengutang.editPengutang import edit_pengutang
-pengutangfile = "pengutang.txt"
-per_page = 2
-
-def load_data_pengutang():
-    with open(pengutangfile, "r") as f:
-            return [line.strip().split(",") for line in f]
+from data.data import loadDataPengutang
 
 def kelola_pengutang():
-
+    data = loadDataPengutang()
+    allId = list(data.keys())
     while True:
         os.system('cls')
+        page_data = []
+        for id in allId:
+            for item in data[id]:
+                barang = ", ".join([barang["Nama Produk"] for barang in item["Barang"]])
 
-        data_pengutang = load_data_pengutang()
-        
-        page_data = data_pengutang
+                page_data.append(
+                [id, item["Nama Pengutang"], item["Total Hutang"],  barang]
+                ) 
 
-        print(tabulate.tabulate(page_data, headers=["ID", "NAMA", "JUMLAH MENGUTANG"], tablefmt="grid", stralign="center", numalign="center"))
+        print(tabulate.tabulate(page_data, headers=["ID", "Nama", "Jumlah Mengutang", "Barang"], tablefmt="grid", stralign="center", numalign="center"))
 
         answer = inquirer.select(
             message="Pilih salah satu opsi:",

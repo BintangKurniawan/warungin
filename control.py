@@ -3,7 +3,7 @@ import os
 from products.checkProduct import cekProduk
 from products.manageProduct import kelolaProduk
 from pendataan.checkpenjualan import cekPenjualan
-
+from pengutang.checkpengutang import kelola_pengutang
 def control():
     while True:
         os.system('cls')
@@ -22,7 +22,7 @@ def control():
         elif answer == "Cek Pendataan Harian":
             cekPenjualan()
         elif answer == "Cek Pengutang":
-            print("Cek pengutang")
+            kelola_pengutang()
         elif answer == "Keluar":
             print("Exit")
             break

@@ -41,5 +41,15 @@ def cariProduk():
                 print(tabulate.tabulate(table_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
             else:
                 print("Produk tidak ditemukan")
+                answer = inquirer.select(
+                    message="Pilih salah satu opsi:",
+                    choices=["Cari Produk lain", "Keluar"],
+                    default="Cari Produk lain"
+                ).execute()
+
+                if answer == "Cari Produk lain":
+                    continue
+                else:
+                    break
         elif answer == "Keluar":
             break

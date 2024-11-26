@@ -1,10 +1,7 @@
 import json
 productsfile = "products.json"
 dailySalesfile = "dailySales.json"
-
-# def loadDataProduk():
-#     with open(productsfile, "r") as f:
-#             return [line.strip().split(",") for line in f]
+pengutangfile = "pengutang.json"
 
 def loadDataProduk():
     with open(productsfile, "r") as f:
@@ -13,4 +10,8 @@ def loadDataProduk():
 
 def loadDailyData():
     with open(dailySalesfile, "r") as f:
+        return json.load(f)
+    
+def loadDataPengutang():
+    with open(pengutangfile, "r") as f:
         return json.load(f)

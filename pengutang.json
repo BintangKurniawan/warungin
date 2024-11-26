@@ -1,0 +1,20 @@
+{
+  "1BDX": [
+    {
+      "Nama Pengutang": "asep jamal",
+      "Total Hutang": 20000,
+      "Barang": [
+        {
+          "Nama Produk": "Beras",
+          "Jumlah": 10,
+          "Tanggal Hutang": "2024-11-20"
+        },
+        {
+          "Nama Produk": "Gula",
+          "Jumlah": 10,
+          "Tanggal Hutang": "2024-11-22"
+        }
+      ]
+    }
+  ]
+}
