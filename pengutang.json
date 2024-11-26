@@ -1,20 +1,29 @@
 {
-  "1BDX": [
-    {
-      "Nama Pengutang": "asep jamal",
-      "Total Hutang": 20000,
-      "Barang": [
-        {
-          "Nama Produk": "Beras",
-          "Jumlah": 10,
-          "Tanggal Hutang": "2024-11-20"
-        },
-        {
-          "Nama Produk": "Gula",
-          "Jumlah": 10,
-          "Tanggal Hutang": "2024-11-22"
-        }
-      ]
+    "1BDX": {
+        "Nama Pengutang": "asep jamal",
+        "Total Hutang": 20000,
+        "Barang": [
+            {
+                "Nama Produk": "Beras",
+                "Jumlah": 10,
+                "Tanggal Hutang": "2024-11-20"
+            },
+            {
+                "Nama Produk": "Gula",
+                "Jumlah": 10,
+                "Tanggal Hutang": "2024-11-22"
+            }
+        ]
+    },
+    "HUQ9": {
+        "Nama Pengutang": "fuad",
+        "Total Hutang": 1000,
+        "Barang": [
+            {
+                "Nama Produk": "cokicoki",
+                "Jumlah Produk": 1,
+                "Tanggal Hutang": "2024-11-11"
+            }
+        ]
     }
-  ]
 }

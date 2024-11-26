@@ -1,23 +1,26 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from pengutang.addPengutang import tambah_pengutang
+from pengutang.addPengutang import tambahPengutang
 from pengutang.editPengutang import edit_pengutang
 from data.data import loadDataPengutang
 
 def kelola_pengutang():
-    data = loadDataPengutang()
-    allId = list(data.keys())
     while True:
         os.system('cls')
+        data = loadDataPengutang()
+        allId = list(data.keys())
         page_data = []
         for id in allId:
-            for item in data[id]:
-                barang = ", ".join([barang["Nama Produk"] for barang in item["Barang"]])
-
-                page_data.append(
-                [id, item["Nama Pengutang"], item["Total Hutang"],  barang]
-                ) 
+            nama_pengutang = data[id]["Nama Pengutang"]
+            total_hutang = data[id]["Total Hutang"]
+            barang_list = data[id]["Barang"]
+        
+        # Gabungkan nama produk dari daftar barang
+            barang = ", ".join([barang["Nama Produk"] for barang in barang_list])
+        
+        # Tambahkan data ke page_data
+            page_data.append([id, nama_pengutang, total_hutang, barang]) 
 
         print(tabulate.tabulate(page_data, headers=["ID", "Nama", "Jumlah Mengutang", "Barang"], tablefmt="grid", stralign="center", numalign="center"))
 
@@ -28,7 +31,7 @@ def kelola_pengutang():
         ).execute()
 
         if answer == "Tambah Pengutang":
-            tambah_pengutang()
+            tambahPengutang()
         elif answer == "Edit Pengutang":
             edit_pengutang()
         elif answer == "Hapus Pengutang":
