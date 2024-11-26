@@ -8,7 +8,7 @@ from data.data import loadDataPengutang
 
 def kelola_pengutang():
     while True:
-        # os.system('cls')
+        os.system('cls')
         data = loadDataPengutang()
         allId = list(data.keys())
 

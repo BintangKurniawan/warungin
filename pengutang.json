@@ -9,5 +9,16 @@
                 "Tanggal Hutang": "2024-11-26"
             }
         ]
+    },
+    "FU4J": {
+        "Nama Pengutang": "suki",
+        "Total Hutang": 2,
+        "Barang": [
+            {
+                "Nama Produk": "suki",
+                "Jumlah Produk": 23,
+                "Tanggal Hutang": "2024-11-26"
+            }
+        ]
     }
 }
