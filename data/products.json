@@ -58,5 +58,11 @@
         "nama": "Beng Beng",
         "stok": 52,
         "harga": 2000
+    },
+    {
+        "id": "XHYO",
+        "nama": "Bakso Urat",
+        "stok": 32,
+        "harga": "20201"
     }
 ]

@@ -1,12 +1,11 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from products.addProduct import tambahProduk
-from products.addStock import tambahStok
-from products.editProduct import editProduk
+from controllers.products.addProduct import tambahProduk
+from controllers.products.addStock import tambahStok
+from controllers.products.editProduct import editProduk
 from products.deleteProduct import hapusProduk
-from data.data import loadDataProduk
-productsfile = "products.txt"
+from models.productsModel import getPaginatedProducts
 perPage = 5
 
 def kelolaProduk():
@@ -15,17 +14,11 @@ def kelolaProduk():
     while True:
         os.system('cls')
 
-        dataProduk = loadDataProduk()
-        dataProduk = list(reversed(dataProduk))
+        dataProduct, totalPages = getPaginatedProducts(curPage, perPage)
 
-        totalRows = len(dataProduk)
-        totalPages = (totalRows + perPage - 1) // perPage 
-        
-        start = curPage * perPage
-        end = start + perPage
-        page_data = [[item["id"], item["nama"], item["stok"], item["harga"]] for item in dataProduk[start:end]]
+        pageData = [[item["id"], item["nama"], item["stok"], item["harga"]] for item in dataProduct]
 
-        print(tabulate.tabulate(page_data, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
+        print(tabulate.tabulate(pageData, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
         print(f"\nHalaman {curPage + 1} dari {totalPages}")
         
 

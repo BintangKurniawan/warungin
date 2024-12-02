@@ -1,7 +1,7 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from data.data import loadDataProduk
+from models.productsModel import loadProducts
 
 def cariProduk():
     # variabel ini untuk menyimpan hasil pencarian
@@ -9,7 +9,7 @@ def cariProduk():
     table_data = [[product["id"], product["nama"], product["stok"], product["harga"]] for product in hasil]
 
     # variabel ini untuk menyimpan data produk
-    data_produk = loadDataProduk()
+    data_produk = loadProducts()
     
     while True:
         os.system('cls')

@@ -1,9 +1,7 @@
-from data.data import loadDataProduk
-import json
-productsfile = "products.json"
+from models.productsModel import loadProducts, saveProducts
 
 def hapusProduk():        
-    data_produk = loadDataProduk()
+    data_produk = loadProducts()
 
     id_produk = input("Masukkan ID produk: ").upper()
 
@@ -16,7 +14,6 @@ def hapusProduk():
         print("Error: ID produk tidak ditemukan.")
         return
 
-    with open(productsfile, "w") as f:
-        json.dump(data_produk, f, indent=4)
+    saveProducts(data_produk)
 
     print("Produk berhasil dihapus")

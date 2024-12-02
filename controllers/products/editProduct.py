@@ -1,10 +1,8 @@
 from InquirerPy import inquirer
-from data.data import loadDataProduk
-import json
-productsfile = "products.json"
+from models.productsModel import loadProducts, saveProducts
 def editProduk():
     from control import control
-    data_produk = loadDataProduk()
+    data_produk = loadProducts()
     while True:
         # Loop khusus untuk memastikan ID produk yang valid dimasukkan
         produk_ditemukan = False
@@ -46,8 +44,7 @@ def editProduk():
             
             if edit_lagi == "Tidak":
                 # Simpan perubahan ke file JSON dan keluar dari loop pengeditan
-                with open(productsfile, "w") as f:
-                    json.dump(data_produk, f, indent=4)
+                saveProducts(data_produk)
                 print("Produk berhasil disimpan.")
                 return
 

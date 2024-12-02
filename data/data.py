@@ -1,5 +1,5 @@
 import json
-productsfile = "products.json"
+productsfile = "data/products.json"
 dailySalesfile = "dailySales.json"
 pengutangfile = "pengutang.json"
 

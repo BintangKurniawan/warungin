@@ -1,8 +1,8 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from products.searchProduct import cariProduk
-from data.data import loadDataProduk
+from controllers.products.searchProduct import cariProduk
+from models.productsModel import getPaginatedProducts
 perPage = 5
 
 def cekProduk():
@@ -10,16 +10,10 @@ def cekProduk():
 
     while True:
         os.system('cls')
-
-        dataProduk = loadDataProduk()
-        dataProduk = list(reversed(dataProduk))
-        # variabel ini untuk menghitung total rows
-        totalRows = len(dataProduk)
-        totalPages = (totalRows + perPage - 1) // perPage 
-
-        start = curPage * perPage
-        end = start + perPage
-        pageData = [[item["id"], item["nama"], item["stok"], item["harga"]] for item in dataProduk[start:end]]
+        
+        dataProduct, totalPages = getPaginatedProducts(curPage, perPage)
+        
+        pageData = [[item["id"], item["nama"], item["stok"], item["harga"]] for item in dataProduct]
 
         print(tabulate.tabulate(pageData, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
         print(f"\nHalaman {curPage + 1} dari {totalPages}")

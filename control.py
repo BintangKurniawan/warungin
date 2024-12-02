@@ -1,7 +1,7 @@
 from InquirerPy import inquirer
 import os
-from products.checkProduct import cekProduk
-from products.manageProduct import kelolaProduk
+from controllers.products.checkProduct import cekProduk
+from controllers.products.manageProduct import kelolaProduk
 from pendataan.checkpenjualan import cekPenjualan
 from pengutang.checkpengutang import kelola_pengutang
 def control():
