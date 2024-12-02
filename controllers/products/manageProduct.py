@@ -4,7 +4,7 @@ import tabulate
 from controllers.products.addProduct import tambahProduk
 from controllers.products.addStock import tambahStok
 from controllers.products.editProduct import editProduk
-from products.deleteProduct import hapusProduk
+from controllers.products.deleteProduct import hapusProduk
 from models.productsModel import getPaginatedProducts
 perPage = 5
 
