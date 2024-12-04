@@ -33,7 +33,7 @@ def cekPenjualan():
 
         answer = inquirer.select(
             message="Pilih salah satu opsi:",
-            choices=["Next Page", "Previous Page", "Filter tanggal", "Tambah Penjualan", "Update Penjualan", "Keluar"],
+            choices=["Next Page", "Previous Page", "Filter tanggal", "Tambah Penjualan", "Keluar"],
             default="Next Page"
         ).execute()
 

@@ -8,13 +8,13 @@
     {
         "id": "GESQ",
         "nama": "Cola",
-        "stok": 100,
+        "stok": 80,
         "harga": 10000
     },
     {
         "id": "3IIJ",
         "nama": "Gula",
-        "stok": 80,
+        "stok": 30,
         "harga": 10000
     },
     {
@@ -26,19 +26,19 @@
     {
         "id": "6IJK",
         "nama": "Telur",
-        "stok": 100,
+        "stok": 20,
         "harga": 10000
     },
     {
         "id": "Q6BD",
         "nama": "Uyah",
-        "stok": 0,
+        "stok": 2,
         "harga": 20
     },
     {
         "id": "0RZN",
         "nama": "Bas",
-        "stok": 24,
+        "stok": 4,
         "harga": 1
     },
     {

@@ -7,20 +7,90 @@
         },
         {
             "Nama Produk": "Gula",
-            "Jumlah": 10,
-            "Profit": 100000
+            "Jumlah": 50,
+            "Profit": 500000
         },
         {
             "Nama Produk": "Uyah",
+            "Jumlah": 72,
+            "Profit": 1440
+        },
+        {
+            "Nama Produk": "Garam",
+            "Jumlah": 32,
+            "Profit": 320000
+        },
+        {
+            "Nama Produk": "Telur",
+            "Jumlah": 206,
+            "Profit": 2060000
+        },
+        {
+            "Nama Produk": "Bas",
+            "Jumlah": 11,
+            "Profit": 11
+        },
+        {
+            "Nama Produk": "Cola",
             "Jumlah": 20,
-            "Profit": 400
+            "Profit": 200000
         }
     ],
     "2024-11-19": [
         {
             "Nama Produk": "Gula",
+            "Jumlah": 41,
+            "Profit": 410000
+        }
+    ],
+    "2024-11-30": [
+        {
+            "Nama Produk": "Telur",
+            "Jumlah": 60,
+            "Profit": 600000
+        }
+    ],
+    "2024-11-21": [
+        {
+            "Nama Produk": "Gula",
+            "Jumlah": 20,
+            "Profit": 200000
+        }
+    ],
+    "2024-11-10": [
+        {
+            "Nama Produk": "Gula",
             "Jumlah": 10,
             "Profit": 100000
+        },
+        {
+            "Nama Produk": "Uyah",
+            "Jumlah": 2,
+            "Profit": 40
+        },
+        {
+            "Nama Produk": "Telur",
+            "Jumlah": 50,
+            "Profit": 500000
+        }
+    ],
+    "2024-11-29": [
+        {
+            "Nama Produk": "Bas",
+            "Jumlah": 20,
+            "Profit": 20
+        },
+        {
+            "Nama Produk": "Uyah",
+            "Jumlah": 2,
+            "Profit": 40
+        }
+    ],
+    "2024-11-25": [
+        {
+            "Nama Produk": "Uyah",
+            "Jumlah": 2,
+            "Profit": 40
         }
     ]
 }

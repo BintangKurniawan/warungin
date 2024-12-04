@@ -1,12 +1,16 @@
 from data.data import loadDailyData, loadDataProduk
 import json
+import os
+
 dailyFile = "dailySales.json"
-productsFile = "products.json"
+productsFile = "data/products.json"
+
+dataProducts = loadDataProduk()
 
 def addDailySale():
     # Memuat data penjualan harian dan data produk dari file JSON
+    global dataProducts
     dataDaily = loadDailyData()
-    dataProducts = loadDataProduk()
     
     # Membuat mapping produk berdasarkan nama produk (huruf kecil) untuk mempermudah pencarian
     productMap = {
@@ -29,6 +33,12 @@ def addDailySale():
                 print(f"Produk '{namaProduk}' sudah tercatat pada tanggal {tanggal}.")
                 tambahJumlah = int(input("Masukkan tambahan jumlah produk: ").strip())
                 
+                stokTersedia = productMap[namaProduk.lower()]["stok"]        
+                
+                if tambahJumlah > stokTersedia:
+                    print(f"Stok tidak mencukupi! Hanya tersedia {stokTersedia} unit.")
+                    continue 
+                
                 # Update jumlah pada entri yang ada di dailySales.json
                 existingProduct["Jumlah"] += tambahJumlah
                 
@@ -39,10 +49,16 @@ def addDailySale():
                 productMap[namaProduk.lower()]["stok"] -= tambahJumlah
                 
                 print(f"Jumlah produk '{namaProduk}' berhasil ditambahkan.")
-                break  # Keluar dari loop setelah memperbarui entri
             else:
                 # Jika produk belum tercatat, tambahkan sebagai entri baru
                 jumlah = int(input("Masukkan jumlah produk: ").strip())
+                
+                stokTersedia = productMap[namaProduk.lower()]["stok"]
+                
+                if jumlah > stokTersedia:
+                    print(f"Stok tidak mencukupi! Hanya tersedia {stokTersedia} unit.")
+                    continue 
+                
                 profit = productMap[namaProduk.lower()]["harga"] * jumlah
                 
                 newData = {
@@ -58,14 +74,16 @@ def addDailySale():
                 productMap[namaProduk.lower()]["stok"] -= jumlah
                 
                 print(f"Produk '{namaProduk}' berhasil ditambahkan ke penjualan tanggal {tanggal}.")
-                break  # Keluar dari loop setelah menambahkan entri baru
+        
+            # Simpan perubahan data harian ke file JSON
+            with open(dailyFile, "w") as f:
+                json.dump(dataDaily, f, indent=4)
+
+            # Simpan perubahan stok produk ke file JSON  
+            with open(productsFile, "w") as f:
+                json.dump(dataProducts, f, indent=4)
+            
+            # Keluar dari loop setelah pembaruan selesai
+            break
         else:
             print("Nama produk tidak ditemukan dalam daftar produk! Silakan coba lagi.")
-    
-    # Simpan perubahan data harian ke file JSON
-    with open(dailyFile, "w") as f:
-        json.dump(dataDaily, f, indent=4)
-    
-    # Simpan perubahan stok produk ke file JSON  
-    with open(productsFile, "w") as f:
-        json.dump(dataProducts, f, indent=4)

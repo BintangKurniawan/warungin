@@ -1,8 +1,8 @@
 from InquirerPy import inquirer
 import os
-from controllers.products.checkProduct import cekProduk
-from controllers.products.manageProduct import kelolaProduk
-from pendataan.checkpenjualan import cekPenjualan
+from views.checkProduct import cekProduk
+from views.manageProduct import kelolaProduk
+from views.checkpenjualan import cekPenjualan
 from pengutang.checkpengutang import kelola_pengutang
 def control():
     while True:
