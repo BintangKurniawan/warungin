@@ -1,24 +1,14 @@
-{
-    "6U6Z": {
-        "Nama Pengutang": "suki",
-        "Total Hutang": 10,
-        "Barang": [
+[
+    {
+        "id": "C5Y0",
+        "nama pengutang": "ambatukam",
+        "total hutang": 30000,
+        "barang": [
             {
-                "Nama Produk": "suki",
-                "Jumlah Produk": 20,
-                "Tanggal Hutang": "2024-11-26"
-            }
-        ]
-    },
-    "FU4J": {
-        "Nama Pengutang": "suki",
-        "Total Hutang": 2,
-        "Barang": [
-            {
-                "Nama Produk": "suki",
-                "Jumlah Produk": 23,
-                "Tanggal Hutang": "2024-11-26"
+                "nama produk": "ssss",
+                "jumlah produk": 20,
+                "tanggal hutang": "2024-12-10"
             }
         ]
     }
-}
+]
