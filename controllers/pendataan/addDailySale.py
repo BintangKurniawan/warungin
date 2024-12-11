@@ -1,10 +1,7 @@
-from data.data import loadDailyData, loadDataProduk
-import json
+from models.dailySalesModel import loadDailyData, saveDailySale
+from models.productsModel import loadProducts, saveProducts
 
-dailyFile = "data/dailySales.json"
-productsFile = "data/products.json"
-
-dataProducts = loadDataProduk()
+dataProducts = loadProducts()
 
 def addDailySale():
     # Memuat data penjualan harian dan data produk dari file JSON
@@ -75,12 +72,10 @@ def addDailySale():
                 print(f"Produk '{namaProduk}' berhasil ditambahkan ke penjualan tanggal {tanggal}.")
         
             # Simpan perubahan data harian ke file JSON
-            with open(dailyFile, "w") as f:
-                json.dump(dataDaily, f, indent=4)
+            saveDailySale(dataDaily)
 
             # Simpan perubahan stok produk ke file JSON  
-            with open(productsFile, "w") as f:
-                json.dump(dataProducts, f, indent=4)
+            saveProducts(dataProducts)
             
             # Keluar dari loop setelah pembaruan selesai
             break
