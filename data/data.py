@@ -1,6 +1,6 @@
 import json
 productsfile = "data/products.json"
-dailySalesfile = "dailySales.json"
+dailySalesfile = "data/dailySales.json"
 pengutangfile = "pengutang.json"
 
 def loadDataProduk():
