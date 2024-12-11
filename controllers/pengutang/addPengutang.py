@@ -58,3 +58,23 @@ def tambahPengutang():
     dataPengutang.append(newData)
 
     savePengutang(dataPengutang)
+
+def checkPengutang():
+    dataPengutang = loadDataPengutang()
+    while True:
+        if len(dataPengutang) == 2:
+            print("Jumlah pengutang sudah mencapai batas maksimum. Mohon maaf tidak bisa menambah pengutang yang baru")
+
+            
+            answer = inquirer.select(
+                message= "Tekan untuk keluar",
+                choices=["Keluar"],
+                default="Keluar"
+            ).execute()
+
+            if answer == "Keluar":
+                break
+        else:
+            
+            tambahPengutang()
+            break
