@@ -5,5 +5,26 @@
             "Jumlah": 2,
             "Profit": 40
         }
+    ],
+    "2024-11-20": [
+        {
+            "Nama Produk": "Uyah",
+            "Jumlah": 3,
+            "Profit": 60
+        }
+    ],
+    "2024-11-19": [
+        {
+            "Nama Produk": "Cola",
+            "Jumlah": 20,
+            "Profit": 200000
+        }
+    ],
+    "2024-11-2": [
+        {
+            "Nama Produk": "Gula",
+            "Jumlah": 20,
+            "Profit": 200000
+        }
     ]
 }
