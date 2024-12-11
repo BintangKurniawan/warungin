@@ -1,0 +1,14 @@
+[
+    {
+        "id": "C5Y0",
+        "nama pengutang": "ambatukam",
+        "total hutang": 30000,
+        "barang": [
+            {
+                "nama produk": "ssss",
+                "jumlah produk": 20,
+                "tanggal hutang": "2024-12-10"
+            }
+        ]
+    }
+]

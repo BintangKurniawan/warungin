@@ -34,7 +34,7 @@ def editProduk():
                 produk_terpilih["harga"] = input("Masukkan harga produk baru: ") 
                 print("Harga produk berhasil diedit")
             elif answer == "Keluar":
-                return control()
+                return 
             
             edit_lagi = inquirer.select(
                 message="Apakah ingin mengedit lagi?",

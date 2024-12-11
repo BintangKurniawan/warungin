@@ -9,4 +9,3 @@ def loadDailyData():
 def saveDailySale(dailySales):
     with open(dailySalesFile, "w") as f:
         json.dump(dailySales, f, indent=4)
-    
