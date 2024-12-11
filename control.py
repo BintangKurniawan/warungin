@@ -5,9 +5,13 @@ from views.manageProduct import kelolaProduk
 from views.checkpenjualan import cekPenjualan
 from views.managePengutang import kelolaPengutang
 from pengutang.checkpengutang import kelola_pengutang
+from views.loginView import login
 def control():
     while True:
         os.system('cls')
+
+        login()
+
         print("========Welcome to Warungin========")
 
         answer = inquirer.select(
