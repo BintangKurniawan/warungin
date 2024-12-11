@@ -52,4 +52,4 @@ def cekPenjualan():
             elif answer == "Filter tanggal":
                 dailySaleByDate()
             elif answer == "Keluar":
-                break
+                return
