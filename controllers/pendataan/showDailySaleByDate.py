@@ -1,4 +1,4 @@
-from data.data import loadDailyData
+from models.dailySalesModel import loadDailyData
 from InquirerPy import inquirer
 import tabulate
 import os

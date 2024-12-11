@@ -1,13 +1,10 @@
 from InquirerPy import inquirer
 import os
 import tabulate
+from models.dailySalesModel import loadDailyData
 
-penjualanfile = "pendataan.txt"
 
 # fungsi ini untuk load data penjualan
-def load_data_penjualan():
-    with open(penjualanfile, "r") as f:
-            return [line.strip().split(",") for line in f]
 
 # fungsi ini untuk mencari penjualan
 def cari_penjualan():
@@ -15,7 +12,7 @@ def cari_penjualan():
     hasil = []
 
     # variabel ini untuk menyimpan data penjualan
-    data_penjualan = load_data_penjualan()
+    data_penjualan = loadDailyData()
     
     while True:
         os.system('cls')
