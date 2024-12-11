@@ -1,5 +1,7 @@
 from InquirerPy import inquirer
 from models.pengutangModel import loadDataPengutang, savePengutang
+from datetime import datetime
+from tabulate import tabulate
 
 def editPengutang():
     dataPengutang = loadDataPengutang()
@@ -41,7 +43,7 @@ def editPengutang():
                     if barangAnswer == "Tambah barang":
                         namaProduk = input("Masukkan nama produk: ").title()
                         jumlahProduk = int(input("Masukkan jumlah produk: "))
-                        tanggalHutang = input("Masukkan tanggal hutang (YYYY-MM-DD): ")
+                        tanggalHutang = datetime.now().strftime("%Y-%m-%d")
                         
                         barangBaru = {
                             "nama produk": namaProduk,
@@ -56,8 +58,9 @@ def editPengutang():
                             print("Tidak ada barang untuk diedit.")
                             continue
 
-                        for i, barang in enumerate(pengutangTerpilih["barang"]):
-                            print(f"{i + 1}. {barang}")
+                        headers = ["No", "Nama Produk", "Jumlah Produk", "Tanggal Hutang"]
+                        table = [[i + 1, barang["nama produk"], barang["jumlah produk"], barang["tanggal hutang"]] for i, barang in enumerate(pengutangTerpilih["barang"])]
+                        print(tabulate(table, headers=headers, tablefmt="grid", stralign="center", numalign="center"))
 
                         indexBarang = int(input("Pilih nomor barang yang akan diedit: ")) - 1
                         if 0 <= indexBarang < len(pengutangTerpilih["barang"]):
@@ -75,8 +78,9 @@ def editPengutang():
                             print("Tidak ada barang untuk dihapus.")
                             continue
 
-                        for i, barang in enumerate(pengutangTerpilih["barang"]):
-                            print(f"{i + 1}. {barang}")
+                        headers = ["No", "Nama Produk", "Jumlah Produk", "Tanggal Hutang"]
+                        table = [[i + 1, barang["nama produk"], barang["jumlah produk"], barang["tanggal hutang"]] for i, barang in enumerate(pengutangTerpilih["barang"])]
+                        print(tabulate(table, headers=headers, tablefmt="grid", stralign="center", numalign="center"))
 
                         indexBarang = int(input("Pilih nomor barang yang akan dihapus: ")) - 1
                         if 0 <= indexBarang < len(pengutangTerpilih["barang"]):
