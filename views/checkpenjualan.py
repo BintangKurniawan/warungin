@@ -1,9 +1,9 @@
 from InquirerPy import inquirer
 import os
 import tabulate
-from pendataan.addDailySale import addDailySale
-from pendataan.showDailySaleByDate import dailySaleByDate
-from data.data import loadDailyData
+from controllers.pendataan.addDailySale import addDailySale
+from controllers.pendataan.showDailySaleByDate import dailySaleByDate
+from models.dailySalesModel import loadDailyData
 
 perPage = 5  # Jumlah entri yang ditampilkan per halaman
 
@@ -21,9 +21,9 @@ def cekPenjualan():
         totalEntries = len(tableData)  # Total entri penjualan
         totalPages = (totalEntries + perPage - 1) // perPage  # Hitung total halaman
         
-        os.system('cls')  # Bersihkan layar
         
         while True:
+            os.system('cls')  # Bersihkan layar 
             # Mengambil data untuk halaman saat ini
             start = curPage * perPage
             end = start + perPage
