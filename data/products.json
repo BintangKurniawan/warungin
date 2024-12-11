@@ -26,13 +26,13 @@
     {
         "id": "6IJK",
         "nama": "Telur",
-        "stok": 6,
+        "stok": 0,
         "harga": 10000
     },
     {
         "id": "Q6BD",
         "nama": "Uyah",
-        "stok": 2,
+        "stok": 4,
         "harga": 20
     },
     {

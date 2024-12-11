@@ -1,7 +1,7 @@
 from data.data import loadDailyData, loadDataProduk
 import json
 
-dailyFile = "dailySales.json"
+dailyFile = "data/dailySales.json"
 productsFile = "data/products.json"
 
 dataProducts = loadDataProduk()
