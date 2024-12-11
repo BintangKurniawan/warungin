@@ -1,17 +1,5 @@
 [
     {
-        "id": "28O7",
-        "nama pengutang": "Bahnanana",
-        "total hutang": "1200",
-        "barang": [
-            {
-                "nama produk": "Suisei",
-                "jumlah produk": 1,
-                "tanggal hutang": "2024-11-17"
-            }
-        ]
-    },
-    {
         "id": "C5Y0",
         "nama pengutang": "ambatukam",
         "total hutang": 30000,
