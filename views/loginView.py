@@ -10,9 +10,9 @@ def login():
             return
         else:
             attempts -= 1
-            print(f"Password atau username salah. Anda memiliki {attempts} kesempatan lagi.")
-
-        if attempts == 0:
-            print("Anda telah gagal login 3 kali. Silakan coba lagi nanti.")
-            exit()
+            if attempts > 0:
+                print(f"Login gagal. Anda memiliki {attempts} kesempatan lagi.")
+            else:
+                print("Anda telah kehabisan kesempatan. Silakan coba lagi nanti.")
+                exit()
 
