@@ -7,10 +7,10 @@ from views.managePengutang import kelolaPengutang
 from pengutang.checkpengutang import kelola_pengutang
 from views.loginView import login
 def control():
+    login()
     while True:
         os.system('cls')
 
-        login()
 
         print("========Welcome to Warungin========")
 

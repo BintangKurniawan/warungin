@@ -10,6 +10,11 @@ def loadUser():
 def validateUser(username, password):
     users = loadUser()
     for user in users:
-        if user["username"] == username and user["password"] == password:
-            return True
+        if user["username"] == username:
+            if user["password"] == password:
+                return True
+            else:
+                print("Password salah!")
+                return False
+    print("Username tidak ditemukan!")
     return False
