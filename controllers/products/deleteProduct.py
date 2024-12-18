@@ -13,7 +13,7 @@ def hapusProduk():
 
         if len(data_produk) == original_length:
             print("Error: ID produk tidak ditemukan.")
-            pilihan = input("apakah anda ingin menghapus produk lain?")
+            pilihan = input("Apakah Anda ingin menghapus produk lain? (y/n): ").lower()
             if pilihan == "y":
                 continue
             else:

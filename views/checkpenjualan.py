@@ -15,7 +15,7 @@ def cekPenjualan():
         tableData = []
         for date, items in data.items():
             for item in items:
-                tableData.append([date, item["Nama Produk"], item["Jumlah"], f"rp. {item["Profit"]}"])
+                tableData.append([date, item["Nama Produk"], item["Jumlah"], f"Rp. {item["Profit"]}"])
         
         curPage = 0  # Halaman awal
         totalEntries = len(tableData)  # Total entri penjualan

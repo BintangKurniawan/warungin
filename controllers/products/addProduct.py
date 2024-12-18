@@ -6,7 +6,7 @@ def tambahProduk():
         namaProduk = input("Masukkan nama produk: ").title()
 
         if not namaProduk.strip():
-            print("Nama produk tidak boleh kosong, silahkan masukkan nama produk.")
+            print("Nama produk tidak boleh kosong. Silakan masukkan nama produk.")
         else:
             break
 
@@ -14,7 +14,7 @@ def tambahProduk():
         try:
             stokProduk = int(input("Masukkan stok produk: "))
             if stokProduk < 0 :
-                print("Stok produk harus bernilai postif. Silahkan maasukkan lagi stok produk dengan benar")
+                print("Stok produk harus bernilai postif. Silakan maasukkan lagi stok produk dengan benar.")
             else:
                 break
         except ValueError: print("Stok produk harus berupa angka.")
@@ -23,10 +23,10 @@ def tambahProduk():
         try:
             hargaProduk = int(input("Masukkan harga produk: "))
             if hargaProduk < 0:
-                print("Harga produk harus bernilai positif. Silahkan masukkan lagi hargaproduk dengan benar.")
+                print("Harga produk harus bernilai positif. Silakan masukkan lagi hargaproduk dengan benar.")
             else:
                 break
-        except ValueError: print("Harga produk harus berupa angka")
+        except ValueError: print("Harga produk harus berupa angka.")
 
     existing_ids = {item["id"] for item in dataProduct}
 

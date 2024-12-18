@@ -30,7 +30,7 @@ def cariProduk():
                 quary = input("Masukkan nama produk: ").title()
 
                 if not quary.strip():
-                    print("Nama produk tidak boleh kosong, silahkan masukkan nama produk.")
+                    print("Nama produk tidak boleh kosong. Silakan masukkan nama produk.")
                 else:
                     break
 

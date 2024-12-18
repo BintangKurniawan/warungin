@@ -96,8 +96,18 @@ def editPengutang():
                         if not pengutangTerpilih["barang"]:
                             print("Tidak ada barang untuk diedit.")
                             continue
+                        
+                        while True:
+                            try:
+                                indexBarang = int(input("Pilih nomor barang yang akan diedit: "))
 
-                        indexBarang = int(input("Pilih nomor barang yang akan diedit: ")) - 1
+                                if indexBarang > 0:
+                                    indexBarang -= 1
+                                    break
+                                else:
+                                    print("Nomor barang harus lebih besar dari 0. Silakan masukkan kembali nomor barang.")
+                            except ValueError:
+                                print("Nomor barang harus berupa angka. Silakan masukkan kembali nomor barang.")
                         if 0 <= indexBarang < len(pengutangTerpilih["barang"]):
                             barangTerpilih = pengutangTerpilih["barang"][indexBarang]
                         
@@ -155,8 +165,18 @@ def editPengutang():
                             print("Tidak ada barang untuk dihapus.")
                             continue
 
+                        
+                        while True:
+                            try:
+                                indexBarang = int(input("Pilih nomor barang yang akan dihapus: ")) 
 
-                        indexBarang = int(input("Pilih nomor barang yang akan dihapus: ")) - 1
+                                if indexBarang > 0:
+                                    indexBarang -= 1
+                                    break
+                                else:
+                                    print("Nomor barang harus lebih besar dari 0. Silakan masukkan kembali nomor barang.")
+                            except ValueError:
+                                print("Nomor barang harus berupa angka. Silakan masukkan kembali nomor barang.")
                         if 0 <= indexBarang < len(pengutangTerpilih["barang"]):
                             pengutangTerpilih["barang"].pop(indexBarang)
                             print("Barang berhasil dihapus.")
