@@ -10,6 +10,13 @@ def tambahPengutang():
     existing_ids = {data["id"] for data in dataPengutang}
     idPengutang = generateRandomID(existing_ids)
 
+    while True:
+                namaPengutang = input("Masukkan nama pengutang: ").title()
+
+                if not namaPengutang.strip():
+                    print("Nama pengutang tidak boleh kosong, silahkan masukkan nama pengutang.")
+                else:
+                    break
     namaPengutang = input("Masukkan nama pengutang: ")
 
     while True:
