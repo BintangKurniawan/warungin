@@ -9,7 +9,17 @@ def tambahStok():
         produkDitemukan = False
         for product in dataProduk:
             if product["id"] == idProduk:
-                stokProduk = int(input("Masukkan stok produk: "))
+               while True:
+                try:
+                    stokProduk = int(input("Masukkan stok produk: "))
+                    if stokProduk < 0 :
+                        print("Stok produk harus bernilai postif. Silahkan maasukkan lagi stok produk dengan benar")
+                    else:
+                        break
+                except ValueError: print("Stok produk harus berupa angka.")
+
+
+
                 product["stok"] = product["stok"] + stokProduk
                 produkDitemukan = True
                 break
