@@ -26,7 +26,13 @@ def cariProduk():
         ).execute()
 
         if answer == "Cari Produk":
-            quary = input("Masukkan nama produk: ").title()
+            while True:
+                quary = input("Masukkan nama produk: ").title()
+
+                if not quary.strip():
+                    print("Nama produk tidak boleh kosong, silahkan masukkan nama produk.")
+                else:
+                    break
 
             # variabel ini untuk mengosongkan variabel hasil sebelumnya
             hasil = []
