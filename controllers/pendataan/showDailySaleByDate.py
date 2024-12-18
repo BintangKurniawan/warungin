@@ -2,6 +2,7 @@ from models.dailySalesModel import loadDailyData
 from InquirerPy import inquirer
 import tabulate
 import os
+import re
 
 perPage = 5
 
@@ -12,9 +13,13 @@ def dailySaleByDate():
     while True:
         os.system('cls')
 
+        while True:
         # Meminta tanggal dari pengguna
-        date = input("Masukkan tanggal yang ingin dilihat (YYYY-MM-DD): ").strip()
-
+            date = input("Masukkan tanggal yang ingin dilihat (YYYY-MM-DD): ").strip()
+            if not re.match(r'^\d{4}-\d{2}-\d{2}$', date):
+                print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD dan tanpa huruf.")
+            else:
+                break
         # Memastikan tanggal ada dalam data
         if date not in data:
             print(f"Tidak ada data penjualan untuk tanggal {date}")
@@ -30,7 +35,7 @@ def dailySaleByDate():
 
         # Memfilter data berdasarkan tanggal
         filteredData = [
-            [date, item["Nama Produk"], item["Jumlah"], item["Profit"]]
+            [date, item["Nama Produk"], item["Jumlah"], f"Rp. {item['Profit']}"]
             for item in data[date]
         ]
 
