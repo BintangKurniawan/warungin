@@ -1,5 +1,6 @@
 from models.dailySalesModel import loadDailyData, saveDailySale
 from models.productsModel import loadProducts, saveProducts
+import re
 
 dataProducts = loadProducts()
 
@@ -13,8 +14,13 @@ def addDailySale():
         product["nama"].lower(): product for product in dataProducts
     }
     
-    tanggal = input("Masukkan tanggal penjualan (YYYY-MM-DD): ").strip()
-    
+    while True:
+        tanggal = input("Masukkan tanggal penjualan (YYYY-MM-DD): ").strip()
+        
+        if not re.match(r'^\d{4}-\d{2}-\d{2}$', tanggal):
+            print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD dan tanpa huruf.")
+        else:
+            break
     # Jika tanggal belum ada di data harian, tambahkan entri baru
     if tanggal not in dataDaily:
         dataDaily[tanggal] = []
@@ -27,8 +33,18 @@ def addDailySale():
             existingProduct = next((item for item in dataDaily[tanggal] if item["Nama Produk"].lower() == namaProduk.lower()), None)
             if existingProduct:
                 print(f"Produk '{namaProduk}' sudah tercatat pada tanggal {tanggal}.")
-                tambahJumlah = int(input("Masukkan tambahan jumlah produk: ").strip())
-                
+
+                while True:
+                    try:
+                        tambahJumlah = int(input("Masukkan tambahan jumlah produk: "))
+                        if tambahJumlah < 0:
+                            print("Jumlah produk harus bernilai positif. Silakan masukkan kembali jumlah produk.")
+                        else:
+                            break
+                    except ValueError:
+                        print("Jumlah produk harus berupa angka. Silakan masukkan jumlah produk yang valid.")
+                        
+
                 stokTersedia = productMap[namaProduk.lower()]["stok"]        
                 
                 if tambahJumlah > stokTersedia:
@@ -47,8 +63,16 @@ def addDailySale():
                 print(f"Jumlah produk '{namaProduk}' berhasil ditambahkan.")
             else:
                 # Jika produk belum tercatat, tambahkan sebagai entri baru
-                jumlah = int(input("Masukkan jumlah produk: ").strip())
-                
+                while True:
+                    try:
+                        jumlah = int(input("Masukkan jumlah produk: "))
+                        if jumlah < 0:
+                            print("Jumlah produk harus bernilai positif. Silakan masukkan kembali jumlah produk.")
+                        else:
+                            break
+                    except ValueError:
+                        print("Jumlah produk harus berupa angka. Silakan masukkan jumlah produk yang valid.")
+
                 stokTersedia = productMap[namaProduk.lower()]["stok"]
                 
                 if jumlah > stokTersedia:
