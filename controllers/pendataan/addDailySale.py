@@ -1,6 +1,6 @@
 from models.dailySalesModel import loadDailyData, saveDailySale
 from models.productsModel import loadProducts, saveProducts
-import re
+from datetime import datetime
 
 dataProducts = loadProducts()
 
@@ -17,10 +17,13 @@ def addDailySale():
     while True:
         tanggal = input("Masukkan tanggal penjualan (YYYY-MM-DD): ").strip()
         
-        if not re.match(r'^\d{4}-\d{2}-\d{2}$', tanggal):
-            print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD dan tanpa huruf.")
-        else:
+        try:
+            # Mengonversi string menjadi datetime
+            datetime.strptime(tanggal, "%Y-%m-%d")
             break
+        except ValueError:
+            print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD dan tanpa huruf.")
+            
     # Jika tanggal belum ada di data harian, tambahkan entri baru
     if tanggal not in dataDaily:
         dataDaily[tanggal] = []
