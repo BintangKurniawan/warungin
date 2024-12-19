@@ -10,7 +10,13 @@ def tambahPengutang():
     existing_ids = {data["id"] for data in dataPengutang}
     idPengutang = generateRandomID(existing_ids)
 
-    namaPengutang = input("Masukkan nama pengutang: ")
+    while True:
+        namaPengutang = input("Masukkan nama pengutang: ").title()
+
+        if not namaPengutang.strip():
+            print("Nama pengutang tidak boleh kosong. Silakan masukkan nama pengutang.")
+        else:
+            break
 
     while True:
         try:
@@ -41,10 +47,23 @@ def tambahPengutang():
         if answer == "Selesai":
             break
         
+        
+        while True:
+            namaBarang = input("Masukkan nama barang: ")
 
-        namaBarang = input("Masukkan nama barang: ")
-
-        jumlahBarang = int(input("Masukkan jumlah barang: "))
+            if not namaBarang.strip():
+                print("Nama barang tidak boleh kosong. Silakan masukkan nama barang.")
+            else:
+                break
+        while True:
+            try:
+                jumlahBarang = int(input("Masukkan jumlah barang: "))
+                if jumlahBarang < 0:
+                    print("Jumlah barang tidak boleh kurang dari 0.")
+                else:
+                    break
+            except ValueError:
+                print("Input tidak valid. Harap masukkan data dengan benar.")
         tanggalHutang = datetime.now().strftime("%Y-%m-%d")
 
         barang = {

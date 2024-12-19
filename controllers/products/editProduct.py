@@ -25,14 +25,38 @@ def editProduk():
             
             # Proses pengeditan sesuai pilihan
             if answer == "Nama":
-                produk_terpilih["nama"] = input("Masukkan nama produk baru: ").title()
-                print("Nama produk berhasil diedit")
+                while True:
+                    produk_terpilih["nama"] = input("Masukkan nama produk baru: ").title()
+
+                    if not produk_terpilih["nama"].strip():
+                        print("Nama produk tidak boleh kosong. Silakan masukkan kembali nama produk.")
+                    else:
+                        print("Nama produk berhasil diedit")
+                        break
             elif answer == "Stok":
-                produk_terpilih["stok"] = input("Masukkan stok produk baru: ") 
-                print("Stok produk berhasil diedit")
+                while True:
+                    try:
+                        produk_terpilih["stok"] = int(input("Masukkan stok produk baru: "))
+
+                        if produk_terpilih["stok"] < 0:
+                            print("Stok produk harus bernilai positif. Silakan masukkan kembali stok produk.")
+                        else:
+                            print("Stok produk berhasil diedit")
+                            break
+                    except ValueError:
+                        print("Stok produk harus berupa angka. Silakan masukkan stok produk yang valid.")
             elif answer == "Harga":
-                produk_terpilih["harga"] = input("Masukkan harga produk baru: ") 
-                print("Harga produk berhasil diedit")
+                while True:
+                    try:
+                        produk_terpilih["harga"] = int(input("Masukkan harga produk baru: "))
+                        if produk_terpilih["harga"] < 0:
+                            print("Harga produk harus bernilai positif. Silakan masukkan kembali harga produk.")
+                        else:
+                            print("Harga produk berhasil diedit")
+                            break
+                    except ValueError:
+                        print("Harga produk harus berupa angka. Silakan masukkan harga produk yang valid.")
+                    
             elif answer == "Keluar":
                 return 
             
