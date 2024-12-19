@@ -38,7 +38,7 @@ def editProduk():
                     try:
                         produk_terpilih["stok"] = int(input("Masukkan stok produk baru: "))
 
-                        if produk_terpilih["stok"] < 0:
+                        if produk_terpilih["stok"] <= 0:
                             print("Stok produk harus bernilai positif. Silakan masukkan kembali stok produk.")
                         else:
                             print("Stok produk berhasil diedit")
@@ -49,7 +49,7 @@ def editProduk():
                 while True:
                     try:
                         produk_terpilih["harga"] = int(input("Masukkan harga produk baru: "))
-                        if produk_terpilih["harga"] < 0:
+                        if produk_terpilih["harga"] <= 0:
                             print("Harga produk harus bernilai positif. Silakan masukkan kembali harga produk.")
                         else:
                             print("Harga produk berhasil diedit")
