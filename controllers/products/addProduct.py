@@ -13,8 +13,8 @@ def tambahProduk():
     while True:
         try:
             stokProduk = int(input("Masukkan stok produk: "))
-            if stokProduk < 0 :
-                print("Stok produk harus bernilai postif. Silakan maasukkan lagi stok produk dengan benar.")
+            if stokProduk <= 0 :
+                print("Stok produk harus bernilai postif dan tak boleh nol. Silakan maasukkan lagi stok produk dengan benar.")
             else:
                 break
         except ValueError: print("Stok produk harus berupa angka.")
@@ -22,8 +22,8 @@ def tambahProduk():
     while True:
         try:
             hargaProduk = int(input("Masukkan harga produk: "))
-            if hargaProduk < 0:
-                print("Harga produk harus bernilai positif. Silakan masukkan lagi hargaproduk dengan benar.")
+            if hargaProduk <= 0:
+                print("Harga produk harus bernilai positif dan tak boleh nol. Silakan masukkan lagi harga produk dengan benar.")
             else:
                 break
         except ValueError: print("Harga produk harus berupa angka.")
