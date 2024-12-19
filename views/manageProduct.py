@@ -16,7 +16,7 @@ def kelolaProduk():
 
         dataProduct, totalPages = getPaginatedProducts(curPage, perPage)
 
-        pageData = [[item["id"], item["nama"], item["stok"], item["harga"]] for item in dataProduct]
+        pageData = [[item["id"], item["nama"], item["stok"], f"Rp. {item["harga"]}"] for item in dataProduct]
 
         print(tabulate.tabulate(pageData, headers=["ID", "NAMA", "STOK", "HARGA"], tablefmt="grid", stralign="center", numalign="center"))
         print(f"\nHalaman {curPage + 1} dari {totalPages}")

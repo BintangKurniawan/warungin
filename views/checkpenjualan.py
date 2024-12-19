@@ -27,11 +27,12 @@ def cekPenjualan():
             # Mengambil data untuk halaman saat ini
             start = curPage * perPage
             end = start + perPage
-            pageData = tableData[start:end]
+            pageData = list(reversed(tableData))
+            paginatedData = pageData[start:end]
             
             # Menampilkan data untuk halaman saat ini
             headers = ["Tanggal", "Nama Produk", "Jumlah", "Profit"]
-            print(tabulate.tabulate(pageData, headers=headers, tablefmt="grid", stralign="center", numalign="center"))
+            print(tabulate.tabulate(paginatedData, headers=headers, tablefmt="grid", stralign="center", numalign="center"))
             print(f"\nHalaman {curPage + 1} dari {totalPages}")
             
             # Opsi yang dapat dipilih
