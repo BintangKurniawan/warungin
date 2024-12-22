@@ -11,7 +11,7 @@ def validateUser(username, password):
     users = loadUser()
     for user in users:
         if user["username"] == username.strip():
-            if user["password"] == password:
+            if user["password"] == password.strip():
                 return True
             else:
                 print("Password salah!")
