@@ -122,7 +122,7 @@ def editPengutang():
                         
                             while True:
                                 os.system('cls')
-                                headers = ["No", "Nama Produk", "Jumlah Produk", "Tanggal Hutang"]
+                                headers = ["Nama Produk", "Jumlah Produk", "Tanggal Hutang"]
                                 table = [[ barangTerpilih["nama produk"], barangTerpilih["jumlah produk"], barangTerpilih["tanggal hutang"]] ]
                                 print(tabulate(table, headers=headers, tablefmt="grid", stralign="center", numalign="center"))
                                 answer = inquirer.select(
