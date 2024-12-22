@@ -4,6 +4,7 @@ import tabulate
 from controllers.pengutang.addPengutang import checkPengutang
 from controllers.pengutang.deletePengutang import hapusPengutang
 from controllers.pengutang.editPengutang import editPengutang
+from controllers.pengutang.pelunasanHutang import pelunasanHutang
 from models.pengutangModel import loadDataPengutang
 
 def kelolaPengutang():
@@ -25,18 +26,18 @@ def kelolaPengutang():
     for item in dataPengutang
 ]
         
-       
-
-        print(tabulate.tabulate(pageData, headers=["ID", "Nama", "Jumlah Hutang", "Barang"], tablefmt="grid", stralign="center", numalign="center"))
+        print(tabulate.tabulate(pageData, headers=["ID", "Nama", "Total Hutang", "Barang"], tablefmt="grid", stralign="center", numalign="center"))
 
         answer = inquirer.select(
             message="Pilih salah satu opsi:",
-            choices=[ "Tambah Pengutang", "Edit Pengutang", "Hapus Pengutang", "Keluar"],
+            choices=[ "Tambah Pengutang", "Pelunasan", "Edit Pengutang", "Hapus Pengutang", "Keluar"],
             default="Tambah Pengutang"
         ).execute()
 
         if answer == "Tambah Pengutang":
             checkPengutang()
+        elif answer == "Pelunasan":
+            pelunasanHutang()
         elif answer == "Edit Pengutang":
             editPengutang()
         elif answer == "Hapus Pengutang":

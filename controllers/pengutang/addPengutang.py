@@ -82,7 +82,7 @@ def checkPengutang():
     dataPengutang = loadDataPengutang()
     while True:
         if len(dataPengutang) == 2:
-            print("Jumlah pengutang sudah mencapai batas maksimum. Mohon maaf tidak bisa menambah pengutang yang baru")
+            print("Jumlah pengutang sudah mencapai batas maksimum. Tidak bisa menambah pengutang yang baru")
 
             
             answer = inquirer.select(

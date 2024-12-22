@@ -21,6 +21,12 @@ def editPengutang():
                 print("ID pengutang tidak ditemukan. Silakan coba lagi.")
 
         while True:
+            os.system('cls')
+
+            data = [[pengutangTerpilih["id"], pengutangTerpilih["nama pengutang"], f"Rp. {pengutangTerpilih["total hutang"]}", ", ".join(f"{barang['nama produk']}" for barang in pengutangTerpilih['barang'] )]]
+
+            print(tabulate(data, headers=["ID", "Nama", "Total Hutang", "Barang"], tablefmt="grid", stralign="center", numalign="center"))
+
             answer = inquirer.select(
                 message="Pilih salah satu yang akan diedit:",
                 choices=["Nama pengutang", "Total hutang", "Barang", "Keluar"],
@@ -34,8 +40,10 @@ def editPengutang():
                     if not pengutangTerpilih["nama pengutang"].strip():
                         print("Nama pengutang tidak boleh kosong. Silakan masukkan kembali nama pengutang.")
                     else:
+                        savePengutang(dataPengutang)
                         print("Nama pengutang berhasil diedit")
                         break
+
             elif answer == "Total hutang":
                 while True:
                     try:
@@ -45,10 +53,10 @@ def editPengutang():
                         elif pengutangTerpilih["total hutang"] > 50000:
                             print("Total hutang melebihi batas maksimal 50000 rupiah. Silakan masukkan kembali total hutang.")
                         else:
+                            savePengutang(dataPengutang)
                             break
                     except ValueError:
                         print("Total hutang harus berupa angka. Silakan masukkan kembali total hutang.")
-
                 
             elif answer == "Barang":
                 while True:
@@ -90,6 +98,7 @@ def editPengutang():
                             "tanggal hutang": tanggalHutang
                         }
                         pengutangTerpilih["barang"].append(barangBaru)
+                        savePengutang(dataPengutang)
                         print("Barang berhasil ditambahkan.")
 
                     elif barangAnswer == "Edit barang":
@@ -114,7 +123,7 @@ def editPengutang():
                             while True:
                                 os.system('cls')
                                 headers = ["No", "Nama Produk", "Jumlah Produk", "Tanggal Hutang"]
-                                table = [[i + 1, barang["nama produk"], barang["jumlah produk"], barang["tanggal hutang"]] for i, barang in enumerate(pengutangTerpilih["barang"])]
+                                table = [[ barangTerpilih["nama produk"], barangTerpilih["jumlah produk"], barangTerpilih["tanggal hutang"]] ]
                                 print(tabulate(table, headers=headers, tablefmt="grid", stralign="center", numalign="center"))
                                 answer = inquirer.select(
                                     message="Pilih salah satu opsi:",
@@ -130,6 +139,7 @@ def editPengutang():
                                         if not barangTerpilih["nama produk"].strip():
                                             print("Nama produk tidak boleh kosong. Silakan masukkan kembali nama produk.")
                                         else:
+                                            savePengutang(dataPengutang)
                                             print("Barang berhasil diedit.")
                                             break
                                 
@@ -140,6 +150,7 @@ def editPengutang():
                                             if barangTerpilih["jumlah produk"] < 0:
                                                 print("Jumlah produk tidak boleh kurang dari 0. Silakan masukkan kembali jumlah produk.")
                                             else:
+                                                savePengutang(dataPengutang)
                                                 print("Barang berhasil diedit.")
                                                 break
                                         except ValueError:
@@ -152,6 +163,7 @@ def editPengutang():
                                         if not re.match(r'^\d{4}-\d{2}-\d{2}$', barangTerpilih["tanggal hutang"]):
                                             print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD dan tanpa huruf.")
                                         else:
+                                            savePengutang(dataPengutang)
                                             print("Barang berhasil diedit.")
                                             break
                                 
@@ -165,7 +177,6 @@ def editPengutang():
                             print("Tidak ada barang untuk dihapus.")
                             continue
 
-                        
                         while True:
                             try:
                                 indexBarang = int(input("Pilih nomor barang yang akan dihapus: ")) 
@@ -179,6 +190,7 @@ def editPengutang():
                                 print("Nomor barang harus berupa angka. Silakan masukkan kembali nomor barang.")
                         if 0 <= indexBarang < len(pengutangTerpilih["barang"]):
                             pengutangTerpilih["barang"].pop(indexBarang)
+                            savePengutang(dataPengutang)
                             print("Barang berhasil dihapus.")
                         else:
                             print("Nomor barang tidak valid.")

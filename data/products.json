@@ -1,62 +1,62 @@
 [
-    {
-        "id": "9FIH",
-        "nama": "Beras",
-        "stok": 85,
-        "harga": 10000
-    },
-    {
-        "id": "GESQ",
-        "nama": "Cola",
-        "stok": 60,
-        "harga": 10000
-    },
-    {
-        "id": "3IIJ",
-        "nama": "Gula",
-        "stok": 0,
-        "harga": 10000
-    },
-    {
-        "id": "4IJK",
-        "nama": "Garam",
-        "stok": 100,
-        "harga": 10000
-    },
-    {
-        "id": "6IJK",
-        "nama": "Telur",
-        "stok": 0,
-        "harga": 10000
-    },
-    {
-        "id": "Q6BD",
-        "nama": "Uyah",
-        "stok": 1,
-        "harga": 20
-    },
-    {
-        "id": "0RZN",
-        "nama": "Bas",
-        "stok": 4,
-        "harga": 1
-    },
-    {
-        "id": "FAAM",
-        "nama": "Rinso",
-        "stok": 33,
-        "harga": 1000
-    },
-    {
-        "id": "0PWP",
-        "nama": "Beng Beng",
-        "stok": 52,
-        "harga": 2000
-    },
-    {
-        "id": "XHYO",
-        "nama": "Bakso Urat",
-        "stok": 32,
-        "harga": "20201"
-    }
+  {
+    "id": "9FIH",
+    "nama": "Beras",
+    "stok": 85,
+    "harga": 10000
+  },
+  {
+    "id": "GESQ",
+    "nama": "Cola",
+    "stok": 60,
+    "harga": 10000
+  },
+  {
+    "id": "3IIJ",
+    "nama": "Gula",
+    "stok": 1000,
+    "harga": 10000
+  },
+  {
+    "id": "4IJK",
+    "nama": "Garam",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "6IJK",
+    "nama": "Telur",
+    "stok": 100,
+    "harga": 10000
+  },
+  {
+    "id": "Q6BD",
+    "nama": "Uyah",
+    "stok": 341,
+    "harga": 20
+  },
+  {
+    "id": "0RZN",
+    "nama": "Bas",
+    "stok": 48,
+    "harga": 1
+  },
+  {
+    "id": "FAAM",
+    "nama": "Rinso",
+    "stok": 33,
+    "harga": 1000
+  },
+  {
+    "id": "0PWP",
+    "nama": "Beng Beng",
+    "stok": 52,
+    "harga": 2000
+  },
+  {
+    "id": "XHYO",
+    "nama": "Bakso Urat",
+    "stok": 32,
+    "harga": "20201"
+  }
 ]
