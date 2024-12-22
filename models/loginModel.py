@@ -10,7 +10,7 @@ def loadUser():
 def validateUser(username, password):
     users = loadUser()
     for user in users:
-        if user["username"] == username:
+        if user["username"] == username.strip():
             if user["password"] == password:
                 return True
             else:
