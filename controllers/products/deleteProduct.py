@@ -4,7 +4,7 @@ def hapusProduk():
     data_produk = loadProducts()
     while True:
         
-        id_produk = input("Masukkan ID produk: ").upper()
+        id_produk = input("Masukkan ID produk: ").upper().strip()
 
         original_length = len(data_produk)
 

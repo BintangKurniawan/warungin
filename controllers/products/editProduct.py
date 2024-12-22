@@ -7,7 +7,7 @@ def editProduk():
         # Loop khusus untuk memastikan ID produk yang valid dimasukkan
         produk_ditemukan = False
         while not produk_ditemukan:
-            id_produk = input("Masukkan ID produk: ").upper()
+            id_produk = input("Masukkan ID produk: ").upper().strip()
             for product in data_produk:
                 if product["id"] == id_produk:
                     produk_ditemukan = True
