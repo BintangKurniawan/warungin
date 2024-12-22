@@ -49,7 +49,7 @@ def tambahPengutang():
         
         
         while True:
-            namaBarang = input("Masukkan nama barang: ")
+            namaBarang = input("Masukkan nama barang: ").title()
 
             if not namaBarang.strip():
                 print("Nama barang tidak boleh kosong. Silakan masukkan nama barang.")
