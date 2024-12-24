@@ -13,16 +13,28 @@ def pelunasanHutang():
     while True:
         try:
             pelunasan = int(input("Masukkan jumlah pelunasan hutang: "))
-            if pelunasan < 0:
-                print("Jumlah pelunasan hutang tidak boleh kurang dari 0 rupiah.")
-            else:
-                break
+
+            for pengutang in dataPengutang:
+                if pengutang["id"] == idPengutang:
+                    pengutang["total hutang"] = pengutang["total hutang"] - pelunasan
+
+                    if pelunasan < 0:
+                        print("Jumlah pelunasan hutang tidak boleh kurang dari 0 rupiah.")
+                        answer = input("Ketik 'y' untuk melanjutkan: ").lower()
+                        if answer == 'y':
+                            return
+                    elif pengutang["total hutang"] < 0:
+                        print("Jumlah pelunasan hutang melebihi total hutang.")
+                        answer = input("Ketik 'y' untuk melanjutkan: ").lower()
+                        if answer == 'y':
+                            return
+                    elif pengutang['total hutang'] == 0:
+                        dataPengutang.remove(pengutang)
+                        break
+                    
         except ValueError:
             print("Input tidak valid. Harap masukkan data dengan benar.")
 
-    for pengutang in dataPengutang:
-        if pengutang["id"] == idPengutang:
-            pengutang["total hutang"] = pengutang["total hutang"] - pelunasan
-            savePengutang(dataPengutang)
-            print("Pelunasan hutang berhasil dilakukan.")
-            return
+        savePengutang(dataPengutang)
+        
+        return
