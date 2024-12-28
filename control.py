@@ -28,5 +28,5 @@ def control():
         elif answer == "Cek Pengutang":
             kelolaPengutang()
         elif answer == "Keluar":
-            print("Exit")
+            print("Berhasil keluar dari program")
             break

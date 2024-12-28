@@ -25,6 +25,8 @@ def tambahStok():
         if produkDitemukan:
             saveProducts(dataProduk)
             print("Stok berhasil ditambahkan")
-            break
+            konfirm = input("Ketik 'y' untuk melanjutkan: ").lower()
+            if konfirm == 'y':
+                break
         else:
             print(f"Error: ID produk '{idProduk}' tidak ditemukan. Coba lagi.")

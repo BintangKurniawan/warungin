@@ -1,7 +1,6 @@
 from InquirerPy import inquirer
 from models.productsModel import loadProducts, saveProducts
 def editProduk():
-    from control import control
     data_produk = loadProducts()
     while True:
         # Loop khusus untuk memastikan ID produk yang valid dimasukkan

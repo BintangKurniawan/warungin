@@ -24,4 +24,6 @@ def hapusProduk():
             saveProducts(data_produk)
 
             print("Produk berhasil dihapus")
-            break
+            konfirm = input("Ketik 'y' untuk melanjutkan: ").lower()
+            if konfirm == 'y':
+                break

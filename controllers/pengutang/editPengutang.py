@@ -54,6 +54,7 @@ def editPengutang():
                             print("Total hutang melebihi batas maksimal 50000 rupiah. Silakan masukkan kembali total hutang.")
                         else:
                             savePengutang(dataPengutang)
+                            print("Total hutang berhasil diedit")
                             break
                     except ValueError:
                         print("Total hutang harus berupa angka. Silakan masukkan kembali total hutang.")
@@ -100,6 +101,9 @@ def editPengutang():
                         pengutangTerpilih["barang"].append(barangBaru)
                         savePengutang(dataPengutang)
                         print("Barang berhasil ditambahkan.")
+                        konfirm = input("Ketik 'y' untuk melanjutkan: ").lower()
+                        if konfirm == 'y':
+                            break
 
                     elif barangAnswer == "Edit barang":
                         if not pengutangTerpilih["barang"]:
@@ -140,8 +144,10 @@ def editPengutang():
                                             print("Nama produk tidak boleh kosong. Silakan masukkan kembali nama produk.")
                                         else:
                                             savePengutang(dataPengutang)
-                                            print("Barang berhasil diedit.")
-                                            break
+                                            print("Nama produk berhasil diedit.")
+                                            konfirm = input("Ketik 'y' untuk melanjutkan: ").lower()
+                                            if konfirm == 'y':
+                                                break
                                 
                                 elif answer == "Jumlah produk":
                                     while True:
@@ -151,8 +157,10 @@ def editPengutang():
                                                 print("Jumlah produk tidak boleh kurang dari 0. Silakan masukkan kembali jumlah produk.")
                                             else:
                                                 savePengutang(dataPengutang)
-                                                print("Barang berhasil diedit.")
-                                                break
+                                                print("Jumlah produk berhasil diedit.")
+                                                konfirm = input("Ketik 'y' untuk melanjutkan: ").lower()
+                                                if konfirm == 'y':
+                                                    break
                                         except ValueError:
                                             print("Jumlah produk harus berupa angka. Silakan masukkan kembali jumlah produk.")  
 
@@ -164,8 +172,10 @@ def editPengutang():
                                             print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD dan tanpa huruf.")
                                         else:
                                             savePengutang(dataPengutang)
-                                            print("Barang berhasil diedit.")
-                                            break
+                                            print("Tanggal hutang berhasil diedit.")
+                                            konfirm = input("Ketik 'y' untuk melanjutkan: ").lower()
+                                            if konfirm == 'y':
+                                                break
                                 
                                 elif answer == "Kembali":
                                     break
@@ -192,6 +202,9 @@ def editPengutang():
                             pengutangTerpilih["barang"].pop(indexBarang)
                             savePengutang(dataPengutang)
                             print("Barang berhasil dihapus.")
+                            konfirm = input("Ketik 'y' untuk melanjutkan: ").lower()
+                            if konfirm == 'y':
+                                break
                         else:
                             print("Nomor barang tidak valid.")
 

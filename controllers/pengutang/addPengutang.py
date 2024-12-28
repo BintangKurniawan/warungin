@@ -38,41 +38,68 @@ def tambahPengutang():
     }
 
     while True:
-        answer = inquirer.select(
-            message="Pilih salah satu opsi:",
-            choices=["Tambah Barang", "Selesai"],
-            default="Tambah Barang"
-        ).execute()
-        
-        if answer == "Selesai":
-            break
-        
-        
-        while True:
-            namaBarang = input("Masukkan nama barang: ").title()
+                namaBarang = input("Masukkan nama barang: ").title()
 
-            if not namaBarang.strip():
-                print("Nama barang tidak boleh kosong. Silakan masukkan nama barang.")
-            else:
-                break
-        while True:
-            try:
-                jumlahBarang = int(input("Masukkan jumlah barang: "))
-                if jumlahBarang < 0:
-                    print("Jumlah barang tidak boleh kurang dari 0.")
+                if not namaBarang.strip():
+                    print("Nama barang tidak boleh kosong. Silakan masukkan nama barang.")
                 else:
                     break
-            except ValueError:
-                print("Input tidak valid. Harap masukkan data dengan benar.")
-        tanggalHutang = datetime.now().strftime("%Y-%m-%d")
+    while True:
+        try:
+            jumlahBarang = int(input("Masukkan jumlah barang: "))
+            if jumlahBarang < 0:
+                print("Jumlah barang tidak boleh kurang dari 0.")
+            else:
+                break
+        except ValueError:
+            print("Input tidak valid. Harap masukkan data dengan benar.")
+    tanggalHutang = datetime.now().strftime("%Y-%m-%d")
 
-        barang = {
-            "nama produk": namaBarang,
-            "jumlah produk": jumlahBarang,
-            "tanggal hutang": tanggalHutang
-        }
+    barang = {
+                "nama produk": namaBarang,
+                "jumlah produk": jumlahBarang,
+                "tanggal hutang": tanggalHutang
+            }
 
-        newData["barang"].append(barang)
+    newData["barang"].append(barang)
+
+    while True:
+        if len(newData["barang"]) > 0:
+            answer = inquirer.select(
+                message="Pilih salah satu opsi:",
+                choices=["Tambah Barang", "Selesai"],
+                default="Tambah Barang"
+            ).execute()
+            
+            if answer == "Selesai":
+                break
+        
+        
+            while True:
+                namaBarang = input("Masukkan nama barang: ").title()
+
+                if not namaBarang.strip():
+                    print("Nama barang tidak boleh kosong. Silakan masukkan nama barang.")
+                else:
+                    break
+            while True:
+                try:
+                    jumlahBarang = int(input("Masukkan jumlah barang: "))
+                    if jumlahBarang < 0:
+                        print("Jumlah barang tidak boleh kurang dari 0.")
+                    else:
+                        break
+                except ValueError:
+                    print("Input tidak valid. Harap masukkan data dengan benar.")
+            tanggalHutang = datetime.now().strftime("%Y-%m-%d")
+
+            barang = {
+                "nama produk": namaBarang,
+                "jumlah produk": jumlahBarang,
+                "tanggal hutang": tanggalHutang
+            }
+
+            newData["barang"].append(barang)
 
     dataPengutang.append(newData)
 
