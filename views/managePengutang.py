@@ -7,12 +7,27 @@ from controllers.pengutang.editPengutang import editPengutang
 from controllers.pengutang.pelunasanHutang import pelunasanHutang
 from models.pengutangModel import loadDataPengutang
 
+def quick_sort(arr, key):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[len(arr) // 2][key]
+        
+        left = [x for x in arr if x[key] < pivot]
+        middle = [x for x in arr if x[key] == pivot]
+        right = [x for x in arr if x[key] > pivot]
+        
+        return quick_sort(left, key) + middle + quick_sort(right, key)
+
+
 def kelolaPengutang():
     while True:
         os.system('cls')
 
         dataPengutang = loadDataPengutang()
         
+        dataPengutang = quick_sort(dataPengutang, 'nama pengutang')
+
         pageData = [
     [
         item['id'],
