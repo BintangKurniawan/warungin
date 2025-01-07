@@ -3,23 +3,33 @@ from InquirerPy import inquirer
 import tabulate
 import os
 import re
-
+from datetime import datetime
 perPage = 5
 
 def dailySaleByDate():
     data = loadDailyData()
     curPage = 0
+    tableData = []
+    for date, items in data.items():
+            for item in items:
+                tableData.append([date, item["Nama Produk"], item["Jumlah"], f"Rp. {item["Profit"]}"])
+            headers = ["Tanggal", "Nama Produk", "Jumlah", "Profit"]
 
     while True:
         os.system('cls')
 
         while True:
         # Meminta tanggal dari pengguna
+        
+            print(tabulate.tabulate(tableData, headers=headers, tablefmt="grid", stralign="center", numalign="center"))
             date = input("Masukkan tanggal yang ingin dilihat (YYYY-MM-DD): ").strip()
-            if not re.match(r'^\d{4}-\d{2}-\d{2}$', date):
-                print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD dan tanpa huruf.")
-            else:
+
+            try:
+                datetime.strptime(date, "%Y-%m-%d")
                 break
+            except ValueError:
+
+                print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD dan tanpa huruf.")
         # Memastikan tanggal ada dalam data
         if date not in data:
             print(f"Tidak ada data penjualan untuk tanggal {date}")

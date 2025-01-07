@@ -2,11 +2,11 @@ from models.dailySalesModel import loadDailyData, saveDailySale
 from models.productsModel import loadProducts, saveProducts
 from datetime import datetime
 
-dataProducts = loadProducts()
 
 def addDailySale():
     # Memuat data penjualan harian dan data produk dari file JSON
-    global dataProducts
+    # global dataProducts
+    dataProducts = loadProducts()
     dataDaily = loadDailyData()
     
     # Membuat mapping produk berdasarkan nama produk (huruf kecil) untuk mempermudah pencarian
