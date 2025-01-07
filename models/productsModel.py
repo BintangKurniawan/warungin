@@ -24,10 +24,22 @@ def reverse_list(lst):
         return []
     return [lst[-1]] + reverse_list(lst[:-1])
 
+def quick_sort(arr, key):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[len(arr) // 2][key]
+        
+        left = [x for x in arr if x[key] < pivot]
+        middle = [x for x in arr if x[key] == pivot]
+        right = [x for x in arr if x[key] > pivot]
+        
+        return quick_sort(left, key) + middle + quick_sort(right, key)
+
 def getPaginatedProducts(page, perPage=5):
     products = loadProducts()
     # Membalik urutan data produk
-    products = reverse_list(products)
+    products = quick_sort(products, "nama")
     totalRows = len(products)
     totalPages = (totalRows + perPage - 1) // perPage
 
