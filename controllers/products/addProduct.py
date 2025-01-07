@@ -7,6 +7,8 @@ def tambahProduk():
 
         if not namaProduk.strip():
             print("Nama produk tidak boleh kosong. Silakan masukkan nama produk.")
+        elif namaProduk in [item["nama"] for item in dataProduct]:
+            print("Nama produk sudah ada. Silakan masukkan nama produk lain.")
         else:
             break
 
