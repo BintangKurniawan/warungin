@@ -29,7 +29,7 @@ def editProduk():
 
                     if not produk_terpilih["nama"].strip():
                         print("Nama produk tidak boleh kosong. Silakan masukkan kembali nama produk.")
-                    elif produk_terpilih["nama"] in [item["nama"] for item in data_produk]:
+                    elif produk_terpilih["nama"] in [item["nama"] for item in data_produk if item["id"] != produk_terpilih["id"]]:
                         print("Nama produk sudah ada. Silakan masukkan kembali nama produk.")
                     else:
                         print("Nama produk berhasil diedit")
