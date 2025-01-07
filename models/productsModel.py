@@ -18,10 +18,16 @@ def generateRandomID(existing_ids, length=4):
         if new_id not in existing_ids:  # Pastikan ID unik
             return new_id
 
+
+def reverse_list(lst):
+    if len(lst) == 0:
+        return []
+    return [lst[-1]] + reverse_list(lst[:-1])
+
 def getPaginatedProducts(page, perPage=5):
     products = loadProducts()
     # Membalik urutan data produk
-    products = list(reversed(products))
+    products = reverse_list(products)
     totalRows = len(products)
     totalPages = (totalRows + perPage - 1) // perPage
 
